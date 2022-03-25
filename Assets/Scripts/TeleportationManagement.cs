@@ -5,16 +5,16 @@ using System;
 
 public class TeleportationManagement : MonoBehaviour
 {
-    [SerializeField] InputActionReference inputAction;
+    public InputAction inputAction = null;
     public UnityEvent startTeleportEvent;
     public UnityEvent cancelTeleportEvent;
 
     private void OnEnable()
     {
-        inputAction.action.Enable();
+        inputAction.Enable();
         //inputAction.action.performed += ctx => Debug.Log( "the action performed" + ctx.ReadValue<Vector2>() );
-        inputAction.action.performed += StartTeleportEvent;
-        inputAction.action.canceled += EndTeleportEvent;
+        inputAction.performed += StartTeleportEvent;
+        inputAction.canceled += EndTeleportEvent;
     }
 
     private void EndTeleportEvent(InputAction.CallbackContext obj)
@@ -32,9 +32,9 @@ public class TeleportationManagement : MonoBehaviour
 
     private void OnDisable()
     {
-        inputAction.action.Disable();
-        inputAction.action.performed -= StartTeleportEvent;
-        inputAction.action.canceled -= EndTeleportEvent;
+        inputAction.Disable();
+        inputAction.performed -= StartTeleportEvent;
+        inputAction.canceled -= EndTeleportEvent;
     }
 
 
