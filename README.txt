@@ -13,5 +13,6 @@ Project setting => set XR Plug-In Management => OpenXR => PlayMode OpenXR runtim
 XR Controller Input
 
 Testing Game Object = Yellow Safety Hat
-Thumbstick BTN => Turn,
-Grip BTN use => Grab grabable items using Left/Right controller Ray
+Ray color changes => On [Only] grabable OBJS from green to white
+Thumbstick BTN Both Controllers=> Turn , and Move,
+Grip BTN use Both Controllers => Grab grabable OBJS using Left/Right controller Ray
