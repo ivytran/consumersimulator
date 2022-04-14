@@ -705,11 +705,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: 
+  cloudProjectId: b488b5ba-2291-4bbd-9b21-f5aa5efa2110
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: ConsumerSimulator (1)
+  organizationId: ivylntran
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
