@@ -153,6 +153,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.BC.ConsumerSimulator
     Standalone: com.BC.ConsumerSimulator
   buildNumber:
     Standalone: 0
@@ -685,7 +686,7 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     Build: 0
-    Collab: 1
+    Collab: 0
     Game Performance: 0
     Legacy Analytics: 0
     Purchasing: 0
@@ -705,11 +706,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: ae7d0c32-5688-46e2-b644-bf33a54479b3
+  cloudProjectId: b488b5ba-2291-4bbd-9b21-f5aa5efa2110
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: ConsumerSimulator
-  organizationId: angelicrf
+  projectName: ConsumerSimulator (1)
+  organizationId: ivylntran
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0

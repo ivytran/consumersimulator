@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8924968041097741733}
   - component: {fileID: 3165877314677881597}
   - component: {fileID: 1757641579476486477}
-  - component: {fileID: 1510863809710841688}
+  - component: {fileID: 5921361704166065484}
+  - component: {fileID: 6493521318688728137}
   m_Layer: 0
   m_Name: Crate_omgea6
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1407526825887880513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7538109, y: 1, z: 0.7675041}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,7 +82,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1510863809710841688
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5921361704166065484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407526825887880513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.011756486, z: 0.40000007}
+  m_Center: {x: -0.000000019767771, y: 0.005878228, z: 0}
+--- !u!65 &6493521318688728137
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

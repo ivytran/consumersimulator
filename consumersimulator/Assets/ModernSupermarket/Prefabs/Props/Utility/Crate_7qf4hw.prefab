@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 5976224987481176774}
   - component: {fileID: 7295843917020263779}
   - component: {fileID: 4802240363639013801}
-  - component: {fileID: 3793971822768373858}
+  - component: {fileID: 3564623486861650433}
   m_Layer: 0
   m_Name: Crate_7qf4hw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &5976224987481176774
 Transform:
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,7 +81,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3793971822768373858
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3564623486861650433
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.15400003, z: 0.3}
-  m_Center: {x: -0.000000007450581, y: 0.077000014, z: 0.005770214}
+  m_Size: {x: 0.45, y: 0.020270381, z: 0.3}
+  m_Center: {x: 0, y: 0.010135273, z: 0.0057702065}
