@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 9120381141444199591}
   - component: {fileID: 3276775384133161606}
   - component: {fileID: 764915465394890316}
-  - component: {fileID: 1336674288327241259}
   m_Layer: 0
   m_Name: Beer_lryra7
   m_TagString: Untagged
@@ -56,12 +55,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b2adcd6f8e1a584b8b6a28641fed42e, type: 2}
-  - {fileID: 2100000, guid: 713cbd5bfdfa7f44b8b22b11b6570123, type: 2}
-  - {fileID: 2100000, guid: bab3dabf24ac46c4697d5a53fcbc24f2, type: 2}
+  - {fileID: 2100000, guid: 4bd5c5d1ebb872247b088b6dfc2994b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,17 +80,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1336674288327241259
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8492041769440271901}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5186224441229937835, guid: a4c4de044a3b8be4cbcda3f7df9896ca, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
