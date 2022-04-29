@@ -10,14 +10,12 @@ Open project in Unity Hub,
 
 Project setting => set XR Plug-In Management => OpenXR => PlayMode OpenXR runtime => Oculus
 ==================
-XR Controller Input
+Controls:
 
 Testing Game Object = Yellow Safety Hat
 Ray color changes => On [Only] grabable OBJS from green to white
-Thumbstick BTN Both Controllers=> Turn , and Move,
+Thumbstick BTN Both Controllers WSDA => Player mouvement,
+Thumbstick BTN Left WSAD => Cart mouvement
 Grip BTN use Both Controllers => Grab grabable OBJS using Left/Right controller Ray
-Created new branch sprint3
-Merged valentinasprint3 to sprint3
-Merged sprint3 to main
-Created new branch sprint4
-Created valentinasprint4
+Left controller Trigger BTN: Pressed once => Cart turns Right
+                             Pressed twice => Cart turns Left
