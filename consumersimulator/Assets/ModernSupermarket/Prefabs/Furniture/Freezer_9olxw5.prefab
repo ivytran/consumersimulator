@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 1151108067696758324}
   - component: {fileID: 1183705116506966101}
   - component: {fileID: 3166351039355169373}
-  - component: {fileID: 2203176661716756892}
+  - component: {fileID: 2858265778400936149}
   m_Layer: 0
   m_Name: Freezer_9olxw5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1151108067696758324
 Transform:
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2203176661716756892
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2858265778400936149
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,10 +92,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2021288538065450121, guid: d8f760edd3c087943bac64956d1c79b6, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.3063455, y: 0.7708926, z: 0.6796937}
+  m_Center: {x: 0.0055448413, y: 0.3854463, z: 0.04514253}
 --- !u!1 &1114776758258362145
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,13 +106,12 @@ GameObject:
   - component: {fileID: 5098028240775387800}
   - component: {fileID: 3011671321177314500}
   - component: {fileID: 4287576247134225174}
-  - component: {fileID: 4932793296617551669}
   m_Layer: 0
   m_Name: Freezer_9olxw5_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5098028240775387800
 Transform:
@@ -150,6 +150,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -175,20 +176,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4932793296617551669
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114776758258362145}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3544993810323862361, guid: d8f760edd3c087943bac64956d1c79b6, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3850605026154099486
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +191,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4484398246609807780
 Transform:

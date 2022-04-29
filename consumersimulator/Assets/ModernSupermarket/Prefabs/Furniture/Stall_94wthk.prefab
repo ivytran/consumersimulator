@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2157373589370147142}
   - component: {fileID: 6965803525841922928}
   - component: {fileID: 3717448870153901961}
-  - component: {fileID: 6379967999657616170}
+  - component: {fileID: 3251193169306507474}
   m_Layer: 0
   m_Name: Stall_94wthk
   m_TagString: Untagged
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6379967999657616170
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3251193169306507474
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +92,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7289549005344681104, guid: e0906d6f20e438b499a40fbf68c5ff7c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.6672211, y: 0.44046044, z: 1.2887056}
+  m_Center: {x: 0.08359599, y: 0.22022974, z: 0.044436097}
