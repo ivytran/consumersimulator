@@ -14,7 +14,8 @@ Controls:
 
 Testing Game Object = Yellow Safety Hat
 Ray color changes => On [Only] grabable OBJS from green to white
-Thumbstick BTN Both Controllers WSDA => Player and the Cart mouvement,
+Thumbstick BTN Both Controllers WSDA => Player mouvement,
+Thumbstick BTN Left WSAD => Cart mouvement
 Grip BTN use Both Controllers => Grab grabable OBJS using Left/Right controller Ray
-Trigger BTN: if pressed once => Cart turns Right
-             if pressed twice => Cart turns Left
+Left controller Trigger BTN: Pressed once => Cart turns Right
+                             Pressed twice => Cart turns Left
