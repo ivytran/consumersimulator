@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 6326077531075688700}
   - component: {fileID: 2956157857057766820}
   - component: {fileID: 6937806919087648117}
-  - component: {fileID: 8454443635756613052}
   - component: {fileID: 4319277172453170728}
   m_Layer: 0
   m_Name: Fridge_4ttiif
@@ -176,19 +175,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8454443635756613052
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3453654693401191462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 2, z: 0.11757249}
-  m_Center: {x: -0.00000005960464, y: 1, z: 0.35840794}
 --- !u!64 &4319277172453170728
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -214,7 +200,6 @@ GameObject:
   - component: {fileID: 5729747045483101270}
   - component: {fileID: 495674441066543534}
   - component: {fileID: 3607755289305939674}
-  - component: {fileID: 8900093178550573031}
   m_Layer: 0
   m_Name: Fridge_4ttiif_DoorRight
   m_TagString: Untagged
@@ -286,19 +271,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8900093178550573031
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5558238154565077296}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6000001, y: 1.5999999, z: 0.027117228}
-  m_Center: {x: 0.30000058, y: 0.9, z: 0.013558607}
 --- !u!1 &8916886984172249476
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +316,6 @@ GameObject:
   - component: {fileID: 5051813691048045094}
   - component: {fileID: 6651700129311728683}
   - component: {fileID: 2400701680317054770}
-  - component: {fileID: 5794263383317483437}
   m_Layer: 0
   m_Name: Fridge_4ttiif_DoorLeft
   m_TagString: Untagged
@@ -416,16 +387,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5794263383317483437
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9151699394929346390}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.5999999, z: 0.027117273}
-  m_Center: {x: -0.29999942, y: 0.9, z: 0.013558465}
