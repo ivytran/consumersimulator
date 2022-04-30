@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1337900951, guid: eef37af9411a6cf468e53bb14e80c628, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337900951, guid: eef37af9411a6cf468e53bb14e80c628, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337900951, guid: eef37af9411a6cf468e53bb14e80c628, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseLeftFridgeDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337900951, guid: eef37af9411a6cf468e53bb14e80c628, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenLeftFridgeDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 8492041769440271901, guid: eef37af9411a6cf468e53bb14e80c628, type: 3}
       propertyPath: m_Name
       value: Beer_lryra7_Var01
