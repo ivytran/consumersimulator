@@ -20,8 +20,12 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2659972848693163990, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659972848693163990, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_RootOrder
@@ -29,43 +33,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.229
+      value: -8.841
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6660001
+      value: 0.657
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.245
+      value: -3.082
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.79335415
+      value: -0.19702336
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.012729508
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6087605
+      value: -0.9802459
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.011736736
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 1.606
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -75
+      value: -202.713
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 1.165
       objectReference: {fileID: 0}
     - target: {fileID: 4415172002775677318, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_Convex
@@ -75,7 +79,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4415172002775677318, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
 --- !u!1 &2454240643855549239 stripped
 GameObject:
@@ -94,10 +99,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!65 &1789138301
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -152,10 +157,70 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StaticStatus, Assembly-CSharp
+        m_MethodName: GrabStaticStatSelectStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StaticStatus, Assembly-CSharp
+        m_MethodName: CartKinematic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StaticStatus, Assembly-CSharp
+        m_MethodName: GrabStaticStatSelectFinish
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StaticStatus, Assembly-CSharp
+        m_MethodName: CartParentObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StaticStatus, Assembly-CSharp
+        m_MethodName: CartNonKinematic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -226,3 +291,15 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &5153153851620216067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2454240643855549239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad8c53e7cf531745ae59a3d2d71edc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
