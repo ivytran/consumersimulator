@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 02875851dea6a264ea343c9aebcb4825, type: 2}
     - target: {fileID: 2659972848693163990, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_Name
-      value: ToiletPaper_tunz3i_Var02
+      value: ToiletPaper_tunz3i_Var02 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2659972848693163990, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_Layer
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.211
+      value: -9.733
       objectReference: {fileID: 0}
     - target: {fileID: 3432252655328193900, guid: fb2f7a88eab07574196dc58c141c9be8, type: 3}
       propertyPath: m_LocalPosition.y
