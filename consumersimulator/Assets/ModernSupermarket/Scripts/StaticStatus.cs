@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaticStatus : MonoBehaviour
 {
@@ -7,9 +8,15 @@ public class StaticStatus : MonoBehaviour
     private string getCartName;
     private string stringItem = "";
     private int thisLength = 0;
+    private GameObject itemTextUI;
+    private GameObject itemTextQuantity;
     public void GrabStaticStatSelectStart()
     {
+        itemTextUI = GameObject.Find( "ItemTxt" );
+        itemTextQuantity = GameObject.Find( "QuantityTxt" );
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        itemTextUI.GetComponent<Text>().text = "Item";
+        itemTextQuantity.GetComponent<Text>().text = "Quantity";
     }
     public void GrabStaticStatSelectFinish()
     {
@@ -18,37 +25,48 @@ public class StaticStatus : MonoBehaviour
     public void CartKinematic()
     {
         getCartName = Carts.cart;
-        GameObject.Find( getCartName ).GetComponent<Rigidbody>().isKinematic = true;
+        if(getCartName != null)
+            GameObject.Find( getCartName ).GetComponent<Rigidbody>().isKinematic = true;
     }
     public void CartNonKinematic()
     {
         getCartName = Carts.cart;
-        GameObject.Find( getCartName ).GetComponent<Rigidbody>().isKinematic = false;
+        if(getCartName != null)
+            GameObject.Find( getCartName ).GetComponent<Rigidbody>().isKinematic = false;
     }
     public void CartParentObject()
     {
+        itemTextUI = GameObject.Find( "ItemTxt" );
+        itemTextQuantity = GameObject.Find( "QuantityTxt" );
         getCartName = Carts.cart;
-        Debug.Log( "cartName " + getCartName );
-        gameObject.transform.parent = GameObject.Find( getCartName ).transform;
-        Carts.isItemCart = true;
-        CartItems.ItemName = gameObject.name;
-        stringItem = CartItems.ItemName.Split( '_' )[0];
-        CartItems.AddItems( stringItem );
-        CartItems.TotalItems = CartItems.HoldItems.Count;
-        //items Objects
-        if (CartItems.ItemCall.Count == 0)
+        if (getCartName != null)
         {
-            thisLength = 1;
+            Debug.Log( "cartName " + getCartName );
+            gameObject.transform.parent = GameObject.Find( getCartName ).transform;
+            Carts.isItemCart = true;
+            CartItems.ItemName = gameObject.name;
+            stringItem = CartItems.ItemName.Split( '_' )[0];
+            CartItems.AddItems( stringItem );
+            CartItems.TotalItems = CartItems.HoldItems.Count;
+            itemTextUI.GetComponent<Text>().text = stringItem;
+            itemTextQuantity.GetComponent<Text>().text = "1";
+            //items Objects
+            if (CartItems.ItemCall.Count == 0)
+            {
+                thisLength = 1;
+            }
+            else
+            {
+                thisLength = CartItems.ItemCall.Count;
+            }
+            for (int i = 0; i < thisLength; i++)
+            {
+                CartItems.AddItemsObject( i , stringItem , $"{stringItem} Desc" );
+                Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
+            }
         }
-        else
-        {
-            thisLength = CartItems.ItemCall.Count;
-        }
-        for (int i = 0; i < thisLength; i++)
-        {
-            CartItems.AddItemsObject( i , stringItem , $"{stringItem} Desc" );
-            Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
-        }
+        itemTextUI.GetComponent<Text>().text = gameObject.name.Split('_')[0];
+        itemTextQuantity.GetComponent<Text>().text = "1";
 
     }
     private IEnumerator ObjectCartCo()
