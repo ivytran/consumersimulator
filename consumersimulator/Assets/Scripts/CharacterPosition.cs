@@ -17,13 +17,37 @@ public class CharacterPosition : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         itemUI = GameObject.Find( "ItemCanvas" );
         leftHandController = GameObject.Find( "LeftHand Controller" );
-        itemUI.transform.position = new Vector3( leftHandController.transform.position.x, leftHandController.transform.position.y, leftHandController.transform.position.z + 1f);
+        if (leftHandController)
+        {
+            if (leftHandController.transform.rotation.y == 0 || leftHandController.transform.rotation.y < 0)
+            {
+                itemUI.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                itemUI.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
+            }
+            else
+            {
+                itemUI.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                itemUI.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
+            }
+        }
+
     }
     private void Update()
     {
         UpdateCharacterController();
-        itemUI.transform.position = new Vector3( leftHandController.transform.position.x , leftHandController.transform.position.y , leftHandController.transform.position.z + 1f );
-
+        if (leftHandController)
+        {
+            if (leftHandController.transform.rotation.y == 0 || leftHandController.transform.rotation.y < 0)
+            {
+                itemUI.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                itemUI.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
+            }
+            else
+            {
+                itemUI.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                itemUI.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
+            }
+        }
     }
     protected virtual void UpdateCharacterController()
     {

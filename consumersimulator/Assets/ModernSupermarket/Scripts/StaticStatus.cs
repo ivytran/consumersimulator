@@ -10,13 +10,19 @@ public class StaticStatus : MonoBehaviour
     private int thisLength = 0;
     private GameObject itemTextUI;
     private GameObject itemTextQuantity;
+    private GameObject itemUI;
     public void GrabStaticStatSelectStart()
     {
+        itemUI = GameObject.Find( "ItemCanvas" );
+        //itemUI.SetActive( true );
         itemTextUI = GameObject.Find( "ItemTxt" );
         itemTextQuantity = GameObject.Find( "QuantityTxt" );
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        itemTextUI.GetComponent<Text>().text = "Item";
-        itemTextQuantity.GetComponent<Text>().text = "Quantity";
+        if (itemUI && itemTextQuantity)
+        {
+            itemTextUI.GetComponent<Text>().text = "Item";
+            itemTextQuantity.GetComponent<Text>().text = "Quantity";
+        }
     }
     public void GrabStaticStatSelectFinish()
     {
@@ -48,8 +54,11 @@ public class StaticStatus : MonoBehaviour
             stringItem = CartItems.ItemName.Split( '_' )[0];
             CartItems.AddItems( stringItem );
             CartItems.TotalItems = CartItems.HoldItems.Count;
-            itemTextUI.GetComponent<Text>().text = stringItem;
-            itemTextQuantity.GetComponent<Text>().text = "1";
+            if (itemTextUI && itemTextQuantity)
+            {
+                itemTextUI.GetComponent<Text>().text = stringItem;
+                itemTextQuantity.GetComponent<Text>().text = "1";
+            }
             //items Objects
             if (CartItems.ItemCall.Count == 0)
             {
@@ -65,10 +74,13 @@ public class StaticStatus : MonoBehaviour
                 Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
             }
         }
-        itemTextUI.GetComponent<Text>().text = gameObject.name.Split('_')[0];
-        itemTextQuantity.GetComponent<Text>().text = "1";
+        if (itemTextUI && itemTextQuantity)
+        {
+            itemTextUI.GetComponent<Text>().text = gameObject.name.Split( '_' )[0];
+            itemTextQuantity.GetComponent<Text>().text = "1";
+        }
 
-    }
+        }
     private IEnumerator ObjectCartCo()
     {
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
