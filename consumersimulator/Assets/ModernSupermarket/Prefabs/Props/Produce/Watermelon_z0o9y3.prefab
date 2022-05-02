@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1756530741379660636}
   - component: {fileID: 3445157998823208185}
   - component: {fileID: 588669436033171507}
-  - component: {fileID: 9215323044115894679}
   m_Layer: 0
   m_Name: Watermelon_z0o9y3
   m_TagString: Untagged
@@ -56,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,17 +80,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9215323044115894679
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381377805246046694}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8388517605789706323, guid: f0f51b80115b1784bb4dcb310eacb9a9, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
