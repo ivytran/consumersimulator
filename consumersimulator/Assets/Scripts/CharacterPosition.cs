@@ -7,7 +7,7 @@ public class CharacterPosition : MonoBehaviour
     private XROrigin m_XROrigin;
     private CharacterControllerDriver m_CharacterController;
     private CharacterController characterController;
-    private GameObject itemUI;
+    private ItemUI itemUI;
     private GameObject leftHandController;
 
     private void Start()
@@ -15,22 +15,9 @@ public class CharacterPosition : MonoBehaviour
         m_XROrigin = GetComponent<XROrigin>();
         m_CharacterController = GetComponent<CharacterControllerDriver>();
         characterController = GetComponent<CharacterController>();
-        itemUI = GameObject.Find( "ItemCanvas" );
-        leftHandController = GameObject.Find( "LeftHand Controller" );
-        if (leftHandController)
-        {
-            if (leftHandController.transform.rotation.y == 0 || leftHandController.transform.rotation.y < 0)
-            {
-                itemUI.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
-                itemUI.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
-            }
-            else
-            {
-                itemUI.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
-                itemUI.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
-            }
-        }
-
+        itemUI = FindObjectOfType<ItemUI>();
+        itemUI.DiactivateCanvas();
+        leftHandController = GameObject.Find( "LeftHandController" );
     }
     private void Update()
     {
@@ -39,13 +26,19 @@ public class CharacterPosition : MonoBehaviour
         {
             if (leftHandController.transform.rotation.y == 0 || leftHandController.transform.rotation.y < 0)
             {
-                itemUI.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
-                itemUI.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
+                if (itemUI.itemCanvas.activeInHierarchy)
+                {
+                    itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                    itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
+                }
             }
             else
             {
-                itemUI.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
-                itemUI.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
+                if (itemUI.itemCanvas.activeInHierarchy)
+                {
+                    itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                    itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
+                }
             }
         }
     }

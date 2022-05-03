@@ -10,11 +10,12 @@ public class StaticStatus : MonoBehaviour
     private int thisLength = 0;
     private GameObject itemTextUI;
     private GameObject itemTextQuantity;
-    private GameObject itemUI;
+    private ItemUI itemUI;
     public void GrabStaticStatSelectStart()
     {
-        itemUI = GameObject.Find( "ItemCanvas" );
-        //itemUI.SetActive( true );
+        itemUI = FindObjectOfType<ItemUI>();
+        //GameObject.Find( "ItemCanvas" );
+        itemUI.ActivateCanvas();
         itemTextUI = GameObject.Find( "ItemTxt" );
         itemTextQuantity = GameObject.Find( "QuantityTxt" );
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
