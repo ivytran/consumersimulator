@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 6643166479708193109}
   - component: {fileID: 7754810577171844848}
   - component: {fileID: 5510831906886122042}
-  - component: {fileID: 6527676416922511904}
+  - component: {fileID: 4589286136600838705}
   m_Layer: 0
   m_Name: Stool_6jdl8x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &6643166479708193109
 Transform:
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,8 +81,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6527676416922511904
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4589286136600838705
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +92,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1029590235287407687, guid: 12d145cd3e1fe5d4689755ac71a76819, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.60646856, y: 1.2212313, z: 0.91165173}
+  m_Center: {x: -0.04766829, y: 0.61103934, z: 0.026061624}

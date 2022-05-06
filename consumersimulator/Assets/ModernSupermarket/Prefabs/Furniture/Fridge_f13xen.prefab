@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1691330062918403288}
   - component: {fileID: 543700997253693432}
   - component: {fileID: 1632627233032877186}
-  - component: {fileID: 3452762819397651510}
+  - component: {fileID: 3003623353433443497}
+  - component: {fileID: 5967272216001197944}
   m_Layer: 0
-  m_Name: Fridge_f13xen
+  m_Name: Fridge_f13xen1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,7 +82,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3452762819397651510
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3003623353433443497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049296096672636303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.112341136, y: 2, z: 0.75111854}
+  m_Center: {x: -0.36359453, y: 1, z: 0.016315043}
+--- !u!64 &5967272216001197944
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,6 +200,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &5355795876717058121
@@ -275,6 +292,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -300,6 +318,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &3043267096368160866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -311,5 +330,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6000001, y: 1.5999999, z: 0.025938494}
-  m_Center: {x: -0.30000004, y: 0.9, z: 0.012969225}
+  m_Size: {x: 0.6000001, y: 1.5999999, z: 0.13741788}
+  m_Center: {x: -0.30000004, y: 0.9, z: 0.06870893}
