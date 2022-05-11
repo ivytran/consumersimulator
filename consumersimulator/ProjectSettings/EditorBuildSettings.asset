@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Consumer_Simulator_UI/Main_Menu/Scenes/Consumer_Simulator_Main_Menu_Scene.unity
+    guid: cf2b11593a9fd1f4e814006f8acce4ee
   - enabled: 1
     path: Assets/ModernSupermarket/Scenes/Scene_Supermarket/Supermarket.unity
     guid: 95cb9ac7a1494454abac29b7879ed266
