@@ -16,7 +16,10 @@ public class CharacterPosition : MonoBehaviour
         m_CharacterController = GetComponent<CharacterControllerDriver>();
         characterController = GetComponent<CharacterController>();
         itemUI = FindObjectOfType<ItemUI>();
-        itemUI.DiactivateCanvas();
+        if (itemUI)
+        {
+            itemUI.DiactivateCanvas();
+        }
         leftHandController = GameObject.Find( "LeftHandController" );
     }
     private void Update()
@@ -26,18 +29,31 @@ public class CharacterPosition : MonoBehaviour
         {
             if (leftHandController.transform.rotation.y == 0 || leftHandController.transform.rotation.y < 0)
             {
-                if (itemUI.itemCanvas.activeInHierarchy)
+                if (itemUI)
                 {
-                    itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
-                    itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
+                    if (itemUI.itemCanvas)
+                    {
+                        if (itemUI.itemCanvas.activeInHierarchy)
+                        {
+                            itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                            itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
+                        }
+                    }
                 }
+
             }
             else
             {
-                if (itemUI.itemCanvas.activeInHierarchy)
+                if (itemUI)
                 {
-                    itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
-                    itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
+                    if (itemUI.itemCanvas)
+                    {
+                        if (itemUI.itemCanvas.activeInHierarchy)
+                        {
+                            itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                            itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
+                        }
+                    }
                 }
             }
         }
