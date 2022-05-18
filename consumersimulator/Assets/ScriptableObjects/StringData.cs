@@ -14,5 +14,7 @@ public class StringData : ScriptableObject, ISerializationCallbackReceiver
         RuntimeValue = dataTransfer;
     }
 
-    public void OnBeforeSerialize() { }
+    public void OnBeforeSerialize() {
+        dataTransfer = RuntimeValue;
+    }
 }
