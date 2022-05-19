@@ -41,17 +41,24 @@ public class SQLiteDatabase : MonoBehaviour
     }
     public void DropDataTable()
     {
-        string connection = "URI=file:" + Application.persistentDataPath + "/" + "My_Database";
-        Debug.Log( connection );
-        IDbConnection dbcon = new SqliteConnection( connection );
-        dbcon.Open();
-        IDbCommand dbcmd;
-        dbcmd = dbcon.CreateCommand();
-        string q_createTable = "DROP TABLE my_table";
-        dbcmd.CommandText = q_createTable;
-        dbcmd.ExecuteReader();
-        dbcon.Close();
-        isTableCreated = true;
+        //if (TableExists())
+        //{
+            string connection = "URI=file:" + Application.persistentDataPath + "/" + "My_Database";
+            Debug.Log( connection );
+            IDbConnection dbcon = new SqliteConnection( connection );
+            dbcon.Open();
+            IDbCommand dbcmd;
+            dbcmd = dbcon.CreateCommand();
+            string q_createTable = "DROP TABLE my_table";
+            dbcmd.CommandText = q_createTable;
+            dbcmd.ExecuteReader();
+            dbcon.Close();
+            isTableCreated = true;
+        //}
+        //else
+        //{
+        //    Debug.Log( "Table does not exit to drop..." );
+        //}
     }
     private void InsertData()
     {
@@ -80,8 +87,12 @@ public class SQLiteDatabase : MonoBehaviour
         const string cmdText = "SELECT name FROM sqlite_master WHERE type='table' AND name='my_table'";
         IDbCommand cmnd_read = dbcon.CreateCommand();
         cmnd_read.CommandText = cmdText;
-       // var cmd = con.CreateCommand( cmdText , typeof( T ).Name );
-        return cmnd_read.ExecuteReader() != null;
+        // var cmd = con.CreateCommand( cmdText , typeof( T ).Name );
+        var result = cmnd_read.ExecuteReader();
+        bool showResult = result.Read();
+        Debug.Log( "hasTable " + showResult);
+        dbcon.Close();      
+        return showResult;
     }
     private void ReadTableData()
     {
@@ -97,6 +108,7 @@ public class SQLiteDatabase : MonoBehaviour
         reader = cmnd_read.ExecuteReader();
         while (reader.Read())
         {
+            //Debug.Log( reader[0].ToString() + reader[1].ToString() + reader[2].ToString() );
             if (!ScoreValues.storeData.ContainsKey( reader[0].ToString() ))
             {
                 ScoreValues.storeData.Add( reader[0].ToString() , reader[1].ToString() );

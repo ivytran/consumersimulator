@@ -94,9 +94,10 @@ namespace SlimUI.ModernMenu{
 			//}
 
 			//check score value
+			//sqlData.DropDataTable(); 
 			if (sqlData.TableExists())
 			{
-			
+				Debug.Log( "exists" );
 				sqlData.ScoreHandlingStart();
 				if (ScoreValues.storeData.Count > 0)
 				{
@@ -111,11 +112,12 @@ namespace SlimUI.ModernMenu{
 						scoreDrp.AddOptions( m_DopScore );
 					}
 				}
-				else
-				{
-					List<string> m_DropOptions = new List<string> { "Round".PadRight( 40 ) + "Score" };
-					scoreDrp.AddOptions( m_DropOptions );
-				}
+			}
+			else
+			{
+				Debug.Log( "Notexists" );
+				List<string> m_DropOptions = new List<string> { "Round".PadRight( 40 ) + "Score" };
+				scoreDrp.AddOptions( m_DropOptions );
 			}
 
 			// check time value
