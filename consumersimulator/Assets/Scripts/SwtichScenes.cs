@@ -43,7 +43,6 @@ public class SwtichScenes : MonoBehaviour
                     {
                         sqlData.ScoreHandling();
                         //sqlData.DropDataTable();
-                       
                         isDatarun = true;
                     }
                 }
