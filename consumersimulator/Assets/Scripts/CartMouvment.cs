@@ -30,7 +30,6 @@ public class CartMouvment : MonoBehaviour
         //    handRotX = ctx.ReadValue<Vector2>();
         //   // CartMove();
         //};
-        //Debug.Log( "performed" + handRotX);
         if (leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "Off")
         {
             leftInputMove.performed += ctx =>
@@ -47,7 +46,7 @@ public class CartMouvment : MonoBehaviour
                 countMove++;
             };
         }
-        if (rightInputActionMove && leftInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "On")
+        if ((rightInputActionMove && leftInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "On") || rightControllerValue || leftControllerValue)
         {
             rightInputMove.performed += ctx =>
             {
@@ -57,6 +56,7 @@ public class CartMouvment : MonoBehaviour
             leftInputMove.performed += ctx =>
             {
                 leftTurn = ctx.ReadValue<float>();
+                Debug.Log( "lStart" + leftTurn );
                 countMove++;
             };
         }
@@ -74,7 +74,7 @@ public class CartMouvment : MonoBehaviour
         {
             rightInputMove.Enable();
         }
-        if (rightInputActionMove && leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "On")
+        if ((rightInputActionMove && leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "On" ) || rightControllerValue || leftControllerValue)
         {
             rightInputMove.Enable();
             leftInputMove.Enable();
@@ -90,7 +90,7 @@ public class CartMouvment : MonoBehaviour
         {
             rightInputMove.Disable();
         }
-        if (rightInputActionMove && leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "On")
+        if ((rightInputActionMove && leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "On") || rightControllerValue || leftControllerValue)
         {
             rightInputMove.Disable();
             leftInputMove.Disable();

@@ -10,6 +10,7 @@ public class CharacterPosition : MonoBehaviour
     private ItemUI itemUI;
     public StringData lftHand;
     public StringData rgtHand;
+    public FloatData volume;
     public IntData performanceSettings;
     public GameObject rightHandController;
     public GameObject leftHandController;
@@ -34,6 +35,10 @@ public class CharacterPosition : MonoBehaviour
         {
             ChangePerformanceSetting();
         }
+        if (volume)
+        {
+            GetComponent<AudioSource>().volume = volume.RuntimeValue;
+        }
     }
     private void Update()
     {
@@ -41,10 +46,12 @@ public class CharacterPosition : MonoBehaviour
         if (leftHandController && !rightHandController)
         {
             SwitchHandControllers( leftHandController );
-        }else if(rightHandController && !leftHandController)
+        }
+        else if (rightHandController && !leftHandController)
         {
             SwitchHandControllers( rightHandController );
-        }else if(rightHandController && leftHandController)
+        }
+        else if (rightHandController && leftHandController)
         {
             SwitchHandControllers( leftHandController );
             SwitchHandControllers( rightHandController );

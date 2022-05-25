@@ -28,10 +28,12 @@ public class SwtichScenes : MonoBehaviour
         {
             sqlData = gameObject.GetComponent<SQLiteDatabase>();
             switchValue = ctx.ReadValue<float>();
-            nDifficulty.RuntimeValue = nDifficulty.RuntimeValue;
-            hDifficulty.RuntimeValue = hDifficulty.RuntimeValue;
-            leftHandController.RuntimeValue = leftHandController.RuntimeValue;
-            rightHandController.RuntimeValue = rightHandController.RuntimeValue;
+            //nDifficulty.RuntimeValue = nDifficulty.RuntimeValue;
+            //hDifficulty.RuntimeValue = hDifficulty.RuntimeValue;
+            //leftHandController.RuntimeValue = leftHandController.RuntimeValue;
+            //rightHandController.RuntimeValue = rightHandController.RuntimeValue;
+            //check the performance settings 
+            //check thye volume
             if (PlayerPrefs.HasKey( "playerscore" ))
             {
                 currentScore = PlayerPrefs.GetInt( "playerscore" ) + 20;
