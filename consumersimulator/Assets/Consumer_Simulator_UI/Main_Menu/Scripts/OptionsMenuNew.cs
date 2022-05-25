@@ -45,11 +45,11 @@ namespace SlimUI.ModernMenu{
 
 		[Header( "CONTROLS SETTINGS" )]
 		public GameObject invertmousetext;
-
+		public TMP_Dropdown perfDropDown;
 		// sliders
 		public GameObject musicSlider;
 		public TMP_Text leftController;
-		public TextMeshProUGUI rightController;
+		public TMP_Text rightController;
 		public GameObject mouseSmoothSlider;
 
 		private float sliderValueSmoothing = 0.0f;
@@ -81,8 +81,14 @@ namespace SlimUI.ModernMenu{
 
 			// check slider values
 			musicSlider.GetComponent<Slider>().value = volume.RuntimeValue;
-			leftHandController.RuntimeValue = leftController.GetComponent<TMP_Text>().text;
-			rightHandController.RuntimeValue = rightController.GetComponent<TMP_Text>().text;
+			if (leftHandController)
+			{
+				leftController.text = leftHandController.RuntimeValue;
+            }
+			if (rightController)
+			{
+				rightController.text = rightHandController.RuntimeValue;
+			}
 			mouseSmoothSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat( "MouseSmoothing" );
 
 			// check full screen
@@ -125,12 +131,13 @@ namespace SlimUI.ModernMenu{
 			{
 				timeText.GetComponent<TMP_Text>().text = time.RuntimeValue.ToString();
 			}
-
+		
 			// check shadow distance/enabled
 			if (platform == Platform.Desktop)
 			{
 				if (performanceSettings.RuntimeValue == 0)
 				{
+					perfDropDown.value = performanceSettings.RuntimeValue;
 					QualitySettings.shadowCascades = 0;
 					QualitySettings.shadowDistance = 0;
 					shadowofftextLINE.gameObject.SetActive( true );
@@ -139,16 +146,25 @@ namespace SlimUI.ModernMenu{
 				}
 				else if (performanceSettings.RuntimeValue == 1)
 				{
-					QualitySettings.shadowCascades = 2;
-					QualitySettings.shadowDistance = 75;
+					//QualitySettings.shadowCascades = 2;
+					//QualitySettings.shadowDistance = 75;
+					//QualitySettings.currentLevel
+					perfDropDown.value = performanceSettings.RuntimeValue;
+					QualitySettings.SetQualityLevel( 1, true );
+					QualitySettings.shadowCascades = 0;
+					QualitySettings.shadowDistance = 0;
 					shadowofftextLINE.gameObject.SetActive( false );
 					shadowlowtextLINE.gameObject.SetActive( true );
 					shadowhightextLINE.gameObject.SetActive( false );
 				}
 				else if (performanceSettings.RuntimeValue == 2)
 				{
-					QualitySettings.shadowCascades = 4;
-					QualitySettings.shadowDistance = 500;
+					//QualitySettings.shadowCascades = 4;
+					//QualitySettings.shadowDistance = 500;
+					perfDropDown.value = performanceSettings.RuntimeValue;
+					QualitySettings.SetQualityLevel( 2, true );
+					QualitySettings.shadowCascades = 0;
+					QualitySettings.shadowDistance = 0;
 					shadowofftextLINE.gameObject.SetActive( false );
 					shadowlowtextLINE.gameObject.SetActive( false );
 					shadowhightextLINE.gameObject.SetActive( true );
@@ -235,28 +251,29 @@ namespace SlimUI.ModernMenu{
 		public void Update()
 		{
 			sliderValueSmoothing = mouseSmoothSlider.GetComponent<Slider>().value;
+		
 		}
 		public void LeftHController()
 		{
 			if (leftHandController.RuntimeValue == "Off")
 			{
 				leftHandController.RuntimeValue = "On";
-				leftController.GetComponent<TMP_Text>().text = leftHandController.RuntimeValue;
+				leftController.text = leftHandController.RuntimeValue;
 			}
 			else
 				leftHandController.RuntimeValue = "Off";
-			leftController.GetComponent<TMP_Text>().text = leftHandController.RuntimeValue;
+			    leftController.text = leftHandController.RuntimeValue;
 		}
 		public void RightHController()
 		{
 			if (rightHandController.RuntimeValue == "Off")
 			{
 				rightHandController.RuntimeValue = "On";
-				rightController.GetComponent<TMP_Text>().text = rightHandController.RuntimeValue;
+				rightController.text = rightHandController.RuntimeValue;
 			}
 			else
 				rightHandController.RuntimeValue = "Off";
-			rightController.GetComponent<TMP_Text>().text = rightHandController.RuntimeValue;
+			    rightController.text = rightHandController.RuntimeValue;
 		}
 		//public void FullScreen (){
 		//	Screen.fullScreen = !Screen.fullScreen;
@@ -375,7 +392,13 @@ namespace SlimUI.ModernMenu{
 			shadowlowtextLINE.gameObject.SetActive( false );
 			shadowhightextLINE.gameObject.SetActive( true );
 		}
-
+		public void PerformanceSetting(TMP_Dropdown drp)
+        {
+            if (perfDropDown)
+            {
+				performanceSettings.RuntimeValue = drp.value;
+            }
+        }
 		//public void MobileShadowsOff (){
 		//	PlayerPrefs.SetInt("MobileShadows",0);
 		//	QualitySettings.shadowCascades = 0;

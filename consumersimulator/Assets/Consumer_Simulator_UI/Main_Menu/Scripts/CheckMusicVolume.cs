@@ -2,14 +2,15 @@
 using System.Collections;
 
 namespace SlimUI.ModernMenu{
+
 	public class CheckMusicVolume : MonoBehaviour {
+		public FloatData musicVolume;
 		public void  Start (){
-			// remember volume level from last time
-			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolume");
+			GetComponent<AudioSource>().volume = musicVolume.RuntimeValue ;
 		}
 
 		public void UpdateVolume (){
-			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolume");
+			GetComponent<AudioSource>().volume = musicVolume.RuntimeValue;
 		}
 	}
 }
