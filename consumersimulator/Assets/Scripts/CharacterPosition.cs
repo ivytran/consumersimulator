@@ -12,8 +12,12 @@ public class CharacterPosition : MonoBehaviour
     public StringData rgtHand;
     public FloatData volume;
     public IntData performanceSettings;
+    public IntData nDifficulty;
+    //public IntData hDifficulty;
     public GameObject rightHandController;
     public GameObject leftHandController;
+    public GameObject actualLeftHand;
+    public GameObject actualRightHand;
 
     private void Start()
     {
@@ -27,8 +31,6 @@ public class CharacterPosition : MonoBehaviour
         }
         if (lftHand || rgtHand)
         {
-            Debug.Log( "leftHandValue " + lftHand.RuntimeValue );
-            Debug.Log( " rightHandValue " + rgtHand.RuntimeValue );
             ChangeHandControllers();
         }
         if (performanceSettings)
@@ -39,44 +41,49 @@ public class CharacterPosition : MonoBehaviour
         {
             GetComponent<AudioSource>().volume = volume.RuntimeValue;
         }
+        if (nDifficulty)
+        {
+            if (nDifficulty.RuntimeValue == 1)
+            {
+                GameObject.FindGameObjectWithTag( "Cart" ).transform.position = new Vector3( 12 , 0 , -12 );
+                GameObject.FindGameObjectWithTag( "Cart" ).SetActive( false );
+            }
+        }
     }
     private void Update()
     {
         UpdateCharacterController();
-        if (leftHandController && !rightHandController)
+        if (leftHandController || rightHandController || actualLeftHand || actualLeftHand)
         {
-            SwitchHandControllers( leftHandController );
-        }
-        else if (rightHandController && !leftHandController)
-        {
-            SwitchHandControllers( rightHandController );
-        }
-        else if (rightHandController && leftHandController)
-        {
-            SwitchHandControllers( leftHandController );
-            SwitchHandControllers( rightHandController );
+            if (leftHandController.activeSelf && !rightHandController.activeSelf)
+            {
+                SwitchHandControllers( actualLeftHand );
+            }
+            else if (rightHandController.activeSelf && !leftHandController.activeSelf)
+            {
+                SwitchHandControllers( actualRightHand );
+            }
+            else if (rightHandController.activeSelf && leftHandController.activeSelf)
+            {
+                SwitchHandControllers( actualRightHand );
+                SwitchHandControllers( actualLeftHand );
+            }
         }
     }
     private void ChangeHandControllers()
     {
         if (lftHand.RuntimeValue == "On" && rgtHand.RuntimeValue == "On")
         {
-            //both handed play
-            Debug.Log( "bothHanded" );
             rightHandController.SetActive( true );
             leftHandController.SetActive( true );
         }
         else if (lftHand.RuntimeValue == "On" && rgtHand.RuntimeValue == "Off")
         {
-            // left handed
-            Debug.Log( "leftHanded" );
             rightHandController.SetActive( false );
             leftHandController.SetActive( true );
         }
         else if (lftHand.RuntimeValue == "Off" && rgtHand.RuntimeValue == "On")
         {
-            //right handed
-            Debug.Log( "rightHanded" );
             rightHandController.SetActive( true );
             leftHandController.SetActive( false );
         }

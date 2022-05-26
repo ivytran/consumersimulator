@@ -68,6 +68,7 @@ namespace SlimUI.ModernMenu{
 		{
 			sqlData = gameObject.GetComponent<SQLiteDatabase>();
 			// check difficulty
+			Debug.Log( "allEcartItems " + CartItems.TotalItems );
 			if (nDifficulty.RuntimeValue == 1)
 			{
 				difficultynormaltextLINE.gameObject.SetActive( true );

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExitDoor : MonoBehaviour
 {
     private BoxCollider[] myColliders;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
