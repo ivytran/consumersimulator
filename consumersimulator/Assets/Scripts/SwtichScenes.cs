@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SwtichScenes : MonoBehaviour
 {
     public InputAction inputMove;
+    public InputAction inputMoveRight;
     private float switchValue;
     public FloatData timeData;
     public FloatData volume;
@@ -24,10 +25,12 @@ public class SwtichScenes : MonoBehaviour
     }
     public void SwtichScene()
     {
-        inputMove.performed += ctx =>
+        if (leftHandController.RuntimeValue == "On" && rightHandController.RuntimeValue == "Off")
         {
-            sqlData = gameObject.GetComponent<SQLiteDatabase>();
-            switchValue = ctx.ReadValue<float>();
+            inputMove.performed += ctx =>
+            {
+                sqlData = gameObject.GetComponent<SQLiteDatabase>();
+                switchValue = ctx.ReadValue<float>();
             //nDifficulty.RuntimeValue = nDifficulty.RuntimeValue;
             //hDifficulty.RuntimeValue = hDifficulty.RuntimeValue;
             //leftHandController.RuntimeValue = leftHandController.RuntimeValue;
@@ -35,32 +38,59 @@ public class SwtichScenes : MonoBehaviour
             //check the performance settings 
             //check thye volume
             if (PlayerPrefs.HasKey( "playerscore" ))
-            {
-                currentScore = PlayerPrefs.GetInt( "playerscore" ) + 20;
-                PlayerPrefs.SetInt( "playerscore" , currentScore );
-                ScoreValues.scoreVal = currentScore.ToString();
-                if (sqlData)
                 {
-                    if (!isDatarun)
+                    currentScore = PlayerPrefs.GetInt( "playerscore" ) + 20;
+                    PlayerPrefs.SetInt( "playerscore" , currentScore );
+                    ScoreValues.scoreVal = currentScore.ToString();
+                    if (sqlData)
                     {
-                        sqlData.ScoreHandling();
+                        if (!isDatarun)
+                        {
+                            sqlData.ScoreHandling();
                         //sqlData.DropDataTable();
                         isDatarun = true;
+                        }
                     }
+                    StartCoroutine( CallToSwitchScenes() );
                 }
-                StartCoroutine( CallToSwitchScenes() );
-            }
-           
-        };
+
+            };
+        }
+        else if(rightHandController.RuntimeValue == "On" && leftHandController.RuntimeValue == "Off")
+        {
+            inputMoveRight.performed += ctx =>
+            {
+                sqlData = gameObject.GetComponent<SQLiteDatabase>();
+                switchValue = ctx.ReadValue<float>();
+                if (PlayerPrefs.HasKey( "playerscore" ))
+                {
+                    currentScore = PlayerPrefs.GetInt( "playerscore" ) + 20;
+                    PlayerPrefs.SetInt( "playerscore" , currentScore );
+                    ScoreValues.scoreVal = currentScore.ToString();
+                    if (sqlData)
+                    {
+                        if (!isDatarun)
+                        {
+                            sqlData.ScoreHandling();
+                            //sqlData.DropDataTable();
+                            isDatarun = true;
+                        }
+                    }
+                    StartCoroutine( CallToSwitchScenes() );
+                }
+            };
+        }
     }
     private void OnEnable()
     {
         inputMove.Enable();
+        inputMoveRight.Enable();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     private void OnDisable()
     {
         inputMove.Disable();
+        inputMoveRight.Disable();
     }
     private void OnSceneLoaded(Scene scene , LoadSceneMode mode)
     {
