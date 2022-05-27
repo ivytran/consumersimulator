@@ -48,8 +48,8 @@ namespace SlimUI.ModernMenu{
 		public TMP_Dropdown perfDropDown;
 		// sliders
 		public GameObject musicSlider;
-		public TMP_Text leftController;
-		public TMP_Text rightController;
+		public GameObject leftController;
+		public GameObject rightController;
 		public GameObject mouseSmoothSlider;
 
 		private float sliderValueSmoothing = 0.0f;
@@ -84,11 +84,27 @@ namespace SlimUI.ModernMenu{
 			musicSlider.GetComponent<Slider>().value = volume.RuntimeValue;
 			if (leftHandController)
 			{
-				leftController.text = leftHandController.RuntimeValue;
+				if (leftHandController.RuntimeValue == "On" || leftHandController.RuntimeValue == "Off")
+				{
+					leftController.GetComponent<TMP_Text>().text = leftHandController.RuntimeValue;
+                }
+                else
+                {
+					leftController.GetComponent<TMP_Text>().text = "Off";
+
+				}
             }
 			if (rightController)
 			{
-				rightController.text = rightHandController.RuntimeValue;
+				if (rightHandController.RuntimeValue == "On" || rightHandController.RuntimeValue == "Off")
+				{
+					rightController.GetComponent<TMP_Text>().text = rightHandController.RuntimeValue;
+                }
+                else
+                {
+					rightController.GetComponent<TMP_Text>().text = "On";
+
+				}
 			}
 			mouseSmoothSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat( "MouseSmoothing" );
 
@@ -259,22 +275,22 @@ namespace SlimUI.ModernMenu{
 			if (leftHandController.RuntimeValue == "Off")
 			{
 				leftHandController.RuntimeValue = "On";
-				leftController.text = leftHandController.RuntimeValue;
+				leftController.GetComponent<TMP_Text>().text = leftHandController.RuntimeValue;
 			}
 			else
 				leftHandController.RuntimeValue = "Off";
-			    leftController.text = leftHandController.RuntimeValue;
+			    leftController.GetComponent<TMP_Text>().text = leftHandController.RuntimeValue;
 		}
 		public void RightHController()
 		{
 			if (rightHandController.RuntimeValue == "Off")
 			{
 				rightHandController.RuntimeValue = "On";
-				rightController.text = rightHandController.RuntimeValue;
+				rightController.GetComponent<TMP_Text>().text = rightHandController.RuntimeValue;
 			}
 			else
 				rightHandController.RuntimeValue = "Off";
-			    rightController.text = rightHandController.RuntimeValue;
+			    rightController.GetComponent<TMP_Text>().text = rightHandController.RuntimeValue;
 		}
 		//public void FullScreen (){
 		//	Screen.fullScreen = !Screen.fullScreen;
