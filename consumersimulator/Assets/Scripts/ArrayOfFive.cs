@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class ArrayOfFive : MonoBehaviour
 {
     //public GameObject[] fiveitems; //will attach other objects in Unity to this one
+       
     public Button myButton;
+ 
     public string[] arrayoffive =
 {
         "Mango",
@@ -16,14 +18,24 @@ public class ArrayOfFive : MonoBehaviour
         "Apple",
         "Wine"
     };
+
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < arrayoffive.Length; i++)
+        foreach (string array in arrayoffive)
         {
-            int rank = i + 1;
-            Console.Write(rank + "." + arrayoffive[i]);
+
+            print(array);
         }
+        //for (int i = 0; i < arrayoffive.Length; i++)
+        //{
+        //    int rank = i + 1;
+        //    Console.Write(rank + "." + arrayoffive[i]);
+        //    print(i);
+
+        //}
+
+        
     }
           
     
@@ -31,7 +43,8 @@ public class ArrayOfFive : MonoBehaviour
     {
         Button btn = myButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
-     
+        //print(arrayoffive);
+
         Debug.Log("You clicked the button!");
     }
     //// Update is called once per frame
