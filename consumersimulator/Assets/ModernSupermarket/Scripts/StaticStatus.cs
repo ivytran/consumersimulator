@@ -11,6 +11,8 @@ public class StaticStatus : MonoBehaviour
     private GameObject itemTextUI;
     private GameObject itemTextQuantity;
     private ItemUI itemUI;
+
+    
     public void GrabStaticStatSelectStart()
     {
         itemUI = FindObjectOfType<ItemUI>();
@@ -54,6 +56,7 @@ public class StaticStatus : MonoBehaviour
             CartItems.ItemName = gameObject.name;
             stringItem = CartItems.ItemName.Split( '_' )[0];
             CartItems.AddItems( stringItem );
+
             CartItems.TotalItems = CartItems.HoldItems.Count;
             if (itemTextUI && itemTextQuantity)
             {
@@ -67,21 +70,46 @@ public class StaticStatus : MonoBehaviour
             }
             else
             {
-                thisLength = CartItems.ItemCall.Count;
+                thisLength = CartItems.TotalItems;
             }
+            CartItems.AddItemsObject( thisLength , stringItem , $"{stringItem} Desc" );
+
             for (int i = 0; i < thisLength; i++)
             {
-                CartItems.AddItemsObject( i , stringItem , $"{stringItem} Desc" );
                 Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
             }
         }
-        if (itemTextUI && itemTextQuantity)
+        else
         {
-            itemTextUI.GetComponent<Text>().text = gameObject.name.Split( '_' )[0];
-            itemTextQuantity.GetComponent<Text>().text = "1";
+            //E-Cart
+            string eCartItem = gameObject.name;
+            stringItem = eCartItem.Split( '_' )[0];
+            CartItems.AddItems( stringItem );
+            CartItems.TotalItems = CartItems.HoldItems.Count;
+            if (itemTextUI && itemTextQuantity)
+            {
+                itemTextUI.GetComponent<Text>().text = "Ecart adedd: \n" + stringItem;
+                itemTextQuantity.GetComponent<Text>().text = "1";
+            }
+            //items Objects
+            if (CartItems.ItemCall.Count == 0)
+            {
+                thisLength = 1;
+            }
+            else
+            {
+                thisLength = CartItems.TotalItems;
+            }
+            CartItems.AddItemsObject( thisLength , stringItem , $"{stringItem} Desc" );
+            for (int i = 0; i < thisLength; i++)
+            {
+                Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
+            }
+            gameObject.SetActive( false );
+        
         }
-
         }
+  
     private IEnumerator ObjectCartCo()
     {
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
