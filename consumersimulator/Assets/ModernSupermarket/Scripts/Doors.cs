@@ -10,14 +10,15 @@ public class Doors : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player"||other.tag=="Cart")
+        if (other.tag=="Player" || other.tag=="Cart")
         {
+            Debug.Log( "cartCollided...." );
             anim.SetBool ("Open", true);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag=="Player"||other.tag == "Cart")
+        if (other.tag=="Player" || other.tag == "Cart")
         {
             anim.SetBool ("Open", false);
         }

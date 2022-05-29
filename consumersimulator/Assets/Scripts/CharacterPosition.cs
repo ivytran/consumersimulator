@@ -8,7 +8,16 @@ public class CharacterPosition : MonoBehaviour
     private CharacterControllerDriver m_CharacterController;
     private CharacterController characterController;
     private ItemUI itemUI;
-    private GameObject leftHandController;
+    public StringData lftHand;
+    public StringData rgtHand;
+    public FloatData volume;
+    public IntData performanceSettings;
+    public IntData nDifficulty;
+    //public IntData hDifficulty;
+    public GameObject rightHandController;
+    public GameObject leftHandController;
+    public GameObject actualLeftHand;
+    public GameObject actualRightHand;
 
     private void Start()
     {
@@ -20,14 +29,92 @@ public class CharacterPosition : MonoBehaviour
         {
             itemUI.DiactivateCanvas();
         }
-        leftHandController = GameObject.Find( "LeftHandController" );
+        if (lftHand || rgtHand)
+        {
+            ChangeHandControllers();
+        }
+        if (performanceSettings)
+        {
+            ChangePerformanceSetting();
+        }
+        if (volume)
+        {
+            GetComponent<AudioSource>().volume = volume.RuntimeValue;
+        }
+        if (nDifficulty)
+        {
+            if (nDifficulty.RuntimeValue == 1)
+            {
+                GameObject.FindGameObjectWithTag( "Cart" ).transform.position = new Vector3( 12 , 0 , -12 );
+                GameObject.FindGameObjectWithTag( "Cart" ).SetActive( false );
+            }
+        }
     }
     private void Update()
     {
         UpdateCharacterController();
-        if (leftHandController)
+        if (leftHandController || rightHandController || actualLeftHand || actualLeftHand)
         {
-            if (leftHandController.transform.rotation.y == 0 || leftHandController.transform.rotation.y < 0)
+            if (leftHandController.activeSelf && !rightHandController.activeSelf)
+            {
+                SwitchHandControllers( actualLeftHand );
+            }
+            else if (rightHandController.activeSelf && !leftHandController.activeSelf)
+            {
+                SwitchHandControllers( actualRightHand );
+            }
+            else if (rightHandController.activeSelf && leftHandController.activeSelf)
+            {
+                SwitchHandControllers( actualRightHand );
+                SwitchHandControllers( actualLeftHand );
+            }
+        }
+    }
+    private void ChangeHandControllers()
+    {
+        if (lftHand.RuntimeValue == "On" && rgtHand.RuntimeValue == "On")
+        {
+            rightHandController.SetActive( true );
+            leftHandController.SetActive( true );
+        }
+        else if (lftHand.RuntimeValue == "On" && rgtHand.RuntimeValue == "Off")
+        {
+            rightHandController.SetActive( false );
+            leftHandController.SetActive( true );
+        }
+        else if (lftHand.RuntimeValue == "Off" && rgtHand.RuntimeValue == "On")
+        {
+            rightHandController.SetActive( true );
+            leftHandController.SetActive( false );
+        }
+    }
+    private void ChangePerformanceSetting()
+    {
+        Debug.Log( "PerformanceValue" + performanceSettings.RuntimeValue );
+        if (performanceSettings.RuntimeValue == 0)
+        {
+            QualitySettings.SetQualityLevel( 0 , true );
+            QualitySettings.shadowCascades = 0;
+            QualitySettings.shadowDistance = 0;
+        }
+        else if (performanceSettings.RuntimeValue == 1)
+        {
+            QualitySettings.SetQualityLevel( 1 , true );
+            QualitySettings.shadowCascades = 0;
+            QualitySettings.shadowDistance = 0;
+        }
+        else if (performanceSettings.RuntimeValue == 2)
+        {
+            QualitySettings.SetQualityLevel( 2 , true );
+            QualitySettings.shadowCascades = 0;
+            QualitySettings.shadowDistance = 0;
+        }
+    }
+    private void SwitchHandControllers(GameObject handController)
+    {
+        if (handController)
+        {
+            if (handController.transform.rotation.y == 0 || handController.transform.rotation.y < 0)
             {
                 if (itemUI)
                 {
@@ -35,7 +122,7 @@ public class CharacterPosition : MonoBehaviour
                     {
                         if (itemUI.itemCanvas.activeInHierarchy)
                         {
-                            itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x - 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                            itemUI.itemCanvas.gameObject.transform.position = new Vector3( handController.transform.position.x - 1f , handController.transform.position.y , handController.transform.position.z );
                             itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , -90f , 0 );
                         }
                     }
@@ -50,7 +137,7 @@ public class CharacterPosition : MonoBehaviour
                     {
                         if (itemUI.itemCanvas.activeInHierarchy)
                         {
-                            itemUI.itemCanvas.gameObject.transform.position = new Vector3( leftHandController.transform.position.x + 1f , leftHandController.transform.position.y , leftHandController.transform.position.z );
+                            itemUI.itemCanvas.gameObject.transform.position = new Vector3( handController.transform.position.x + 1f , handController.transform.position.y , handController.transform.position.z );
                             itemUI.itemCanvas.gameObject.transform.rotation = Quaternion.Euler( 0 , 90f , 0 );
                         }
                     }

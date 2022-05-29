@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 public class CartMouvment : MonoBehaviour
 {
   
-    public Transform hand;
+    //public Transform hand;
     private float speed = 15f;
     private bool initMove = false;
     private Vector2 handRotX;
@@ -13,10 +13,15 @@ public class CartMouvment : MonoBehaviour
     private bool isRight = false;
     private bool isLeft = false;
     private float leftTurn;
+    private float rightTurn;
     private float newYValue = 0;
     private int countMove = 0;
-    public InputActionReference inputActionMove;
-    public InputAction inputMove;
+    public InputActionReference leftInputActionMove;
+    public InputAction leftInputMove;
+    public InputActionReference rightInputActionMove;
+    public InputAction rightInputMove;
+    public StringData leftControllerValue;
+    public StringData rightControllerValue;
 
     private void FixedUpdate()
     {
@@ -25,24 +30,71 @@ public class CartMouvment : MonoBehaviour
         //    handRotX = ctx.ReadValue<Vector2>();
         //   // CartMove();
         //};
-        //Debug.Log( "performed" + handRotX);
-
-        inputMove.performed += ctx =>
+        if (leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "Off")
         {
-            leftTurn = ctx.ReadValue<float>();
-            countMove++;
-        };
+            leftInputMove.performed += ctx =>
+            {
+                leftTurn = ctx.ReadValue<float>();
+                countMove++;
+            };
+        }
+        if (rightInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "Off")
+        {
+            rightInputMove.performed += ctx =>
+            {
+                rightTurn = ctx.ReadValue<float>();
+                countMove++;
+            };
+        }
+        if ((rightInputActionMove && leftInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "On") || rightControllerValue || leftControllerValue)
+        {
+            rightInputMove.performed += ctx =>
+            {
+                rightTurn = ctx.ReadValue<float>();
+                countMove++;
+            };
+            leftInputMove.performed += ctx =>
+            {
+                leftTurn = ctx.ReadValue<float>();
+                Debug.Log( "lStart" + leftTurn );
+                countMove++;
+            };
+        }
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
     }
     private void OnEnable()
     {
-        inputMove.Enable();
+        if (leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "Off")
+        {
+            leftInputMove.Enable();
+        }
+        if (rightInputActionMove && leftControllerValue.RuntimeValue == "Off" && rightControllerValue.RuntimeValue == "On")
+        {
+            rightInputMove.Enable();
+        }
+        if ((rightInputActionMove && leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "On" ) || rightControllerValue || leftControllerValue)
+        {
+            rightInputMove.Enable();
+            leftInputMove.Enable();
+        }
     }
     private void OnDisable()
     {
-        inputMove.Disable();
+        if (leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "Off")
+        {
+            leftInputMove.Disable();
+        }
+        if (rightInputActionMove && leftControllerValue.RuntimeValue == "Off" && rightControllerValue.RuntimeValue == "On")
+        {
+            rightInputMove.Disable();
+        }
+        if ((rightInputActionMove && leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "On") || rightControllerValue || leftControllerValue)
+        {
+            rightInputMove.Disable();
+            leftInputMove.Disable();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -19,7 +19,7 @@ namespace SlimUI.ModernMenu{
 		[Header( "TopMenu" )]
 
 		public TMP_Text scoreValue;
-
+		public TMP_Text itemValue;
 		[Header( "Theme Settings" )]
 		public Theme theme;
 		int themeIndex;
@@ -90,6 +90,13 @@ namespace SlimUI.ModernMenu{
 				if (PlayerPrefs.HasKey( "playerscore" ))
 				{
 					scoreValue.text = PlayerPrefs.GetInt( "playerscore" ).ToString();
+				}
+			}
+            if (itemValue)
+            {
+				if (CartItems.TotalItems > 0)
+				{
+					itemValue.text = CartItems.TotalItems.ToString();
 				}
 			}
 			playMenu.SetActive( false );
