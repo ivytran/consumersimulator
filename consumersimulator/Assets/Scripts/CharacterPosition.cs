@@ -74,6 +74,7 @@ public class CharacterPosition : MonoBehaviour
     {
         if (lftHand.RuntimeValue == "On" && rgtHand.RuntimeValue == "On")
         {
+            Debug.Log( "leftandRightaretrue" );
             rightHandController.SetActive( true );
             leftHandController.SetActive( true );
         }

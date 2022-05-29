@@ -34,6 +34,7 @@ public class StaticStatus : MonoBehaviour
     public void CartKinematic()
     {
         getCartName = Carts.cart;
+        Debug.Log( "getCartName" + getCartName );
         if(getCartName != null)
             GameObject.Find( getCartName ).GetComponent<Rigidbody>().isKinematic = true;
     }
@@ -50,7 +51,7 @@ public class StaticStatus : MonoBehaviour
         getCartName = Carts.cart;
         if (getCartName != null)
         {
-            Debug.Log( "cartName " + getCartName );
+            Debug.Log( "cartNameisNotNull " + getCartName );
             gameObject.transform.parent = GameObject.Find( getCartName ).transform;
             Carts.isItemCart = true;
             CartItems.ItemName = gameObject.name;

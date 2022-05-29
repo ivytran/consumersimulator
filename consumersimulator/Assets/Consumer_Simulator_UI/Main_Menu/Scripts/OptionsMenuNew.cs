@@ -99,13 +99,19 @@ namespace SlimUI.ModernMenu{
 				if (rightHandController.RuntimeValue == "On" || rightHandController.RuntimeValue == "Off")
 				{
 					rightController.GetComponent<TMP_Text>().text = rightHandController.RuntimeValue;
-                }
-                else
-                {
+				}
+				else
+				{
 					rightController.GetComponent<TMP_Text>().text = "On";
 
 				}
 			}
+			if((rightHandController.RuntimeValue != "On" || rightHandController.RuntimeValue != "Off") && (leftHandController.RuntimeValue != "On" || leftHandController.RuntimeValue != "Off"))
+            {
+				rightHandController.RuntimeValue = "On";
+				leftHandController.RuntimeValue = "Off";
+			}
+
 			mouseSmoothSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat( "MouseSmoothing" );
 
 			// check full screen
