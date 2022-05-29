@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LeftHandController
   - Cart
+  - RightHandController
   layers:
   - Default
   - TransparentFX

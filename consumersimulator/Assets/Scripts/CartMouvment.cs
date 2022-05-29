@@ -25,29 +25,28 @@ public class CartMouvment : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //inputActionMove.action.performed += ctx =>
-        //{
-        //    handRotX = ctx.ReadValue<Vector2>();
-        //   // CartMove();
-        //};
+       
         if (leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "Off")
-        {
+        {      
             leftInputMove.performed += ctx =>
             {
                 leftTurn = ctx.ReadValue<float>();
                 countMove++;
             };
         }
-        if (rightInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "Off")
+        else if (rightInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "Off")
         {
+            Debug.Log( "RightHandsCalled..." );
             rightInputMove.performed += ctx =>
             {
                 rightTurn = ctx.ReadValue<float>();
+                Debug.Log( "RightHandsCalledValue..." + rightTurn );
                 countMove++;
             };
         }
-        if ((rightInputActionMove && leftInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "On") || rightControllerValue || leftControllerValue)
+        else if ((rightInputActionMove && leftInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "On") || rightControllerValue || leftControllerValue)
         {
+            Debug.Log( "bothHandsCalled..." );
             rightInputMove.performed += ctx =>
             {
                 rightTurn = ctx.ReadValue<float>();
@@ -99,7 +98,7 @@ public class CartMouvment : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag( "LeftHandController" ))
+        if (other.CompareTag( "LeftHandController" ) || other.CompareTag( "RightHandController" ))
         {
             //    if (hand)
             //    {
