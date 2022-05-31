@@ -107,7 +107,6 @@ public class StaticStatus : MonoBehaviour
                 Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
             }
             gameObject.SetActive( false );
-        
         }
         }
   
@@ -117,4 +116,6 @@ public class StaticStatus : MonoBehaviour
         yield return new WaitForSeconds( 2f );
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
+ 
+    
 }
