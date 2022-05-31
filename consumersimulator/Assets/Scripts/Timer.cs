@@ -22,6 +22,10 @@ public class Timer : MonoBehaviour
     public GameObject mainItemsUi;
     private int currentScore;
     public float remainingTime;
+    public GameObject winObj;
+    public GameObject lostObj;
+    public GameObject progObj;
+    public GameObject progAdvObj;
     public IEnumerator GameStartDelay()
     {
         timerTextField.text = "Timer";
@@ -94,6 +98,7 @@ public class Timer : MonoBehaviour
                         currentScore = PlayerPrefs.GetInt( "playerscore" ) + 100;
                         PlayerPrefs.SetInt( "playerscore" , currentScore );
                     }
+                    winObj.SetActive( true );
                 }
                 break;
             case 3:
@@ -107,6 +112,7 @@ public class Timer : MonoBehaviour
                         currentScore = PlayerPrefs.GetInt( "playerscore" ) + 60;
                         PlayerPrefs.SetInt( "playerscore" , currentScore );
                     }
+                    progAdvObj.SetActive( true );
                 }
                 break;
             case 2:
@@ -121,7 +127,7 @@ public class Timer : MonoBehaviour
                         currentScore = PlayerPrefs.GetInt( "playerscore" ) + 40;
                         PlayerPrefs.SetInt( "playerscore" , currentScore );
                     }
-
+                    progObj.SetActive( true );
                 }
                 break;
             case 1:
@@ -137,6 +143,7 @@ public class Timer : MonoBehaviour
                         currentScore = 0;
                         PlayerPrefs.SetInt( "playerscore" , currentScore );
                     }
+                    lostObj.SetActive(true);
                 }
                 break;
             default:
