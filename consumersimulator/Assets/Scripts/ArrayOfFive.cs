@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +7,8 @@ public class ArrayOfFive : MonoBehaviour
 {       
     public Button myButton;
     public TMP_Text textField;
+    
+    private Timer timer;
     private string[] arrayoffive =
     {"Banana","Pasta","Sliced Bread","Apple","Wine","1","2","3","4","5","6","7",
         "8","9","10","11","12","13","14","15","16","17","18","19","20","21","22",
@@ -16,14 +16,19 @@ public class ArrayOfFive : MonoBehaviour
     };
     void Start()
     {
+        timer = FindObjectOfType<Timer>();
         RandmeItems();
     }
     private void RandmeItems()
     {
-        if (textField)
+        if (textField )
         {
             List<string> listNumbers = new List<string>();
             string pickItem;
+            //if (!mainItemsUi.activeSelf)
+            //{
+            //    mainItemsUi.SetActive( true );
+            //}
             for (int i = 0; i < 5; i++)
             {
                 do
@@ -43,7 +48,14 @@ public class ArrayOfFive : MonoBehaviour
     }
     public void TaskOnClick()
     {
-        Debug.Log( "You clicked the button!" );
+        if (timer)
+        {
+          DeactivateItemMenu();
+        }
     }
-
+    private void DeactivateItemMenu()
+    {
+        StartCoroutine( timer.GameStartDelay() ); 
+    }
+  
 }

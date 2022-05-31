@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,9 +18,11 @@ public class Timer : MonoBehaviour
  
 
     public Text timerTextField;
-    IEnumerator GameStartDelay()
+    private bool inFirst = false;
+    public GameObject mainItemsUi;
+    public IEnumerator GameStartDelay()
     {
-
+        timerTextField.text = "Timer";
         while (countdownTime > 0)
         {
             countdownDisplay.text = countdownTime.ToString();
@@ -37,15 +38,9 @@ public class Timer : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         countdownDisplay.gameObject.SetActive(false);
+        inFirst = true;
 
     }
-
-    void Start()
-    {
-        StartCoroutine(GameStartDelay());
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -53,6 +48,10 @@ public class Timer : MonoBehaviour
         if (countdownTime == 0)
         {
             UpdateTimer();
+        }
+        if (inFirst && mainItemsUi && mainItemsUi.activeSelf)
+        {
+            mainItemsUi.SetActive( false );
         }
     }
 
