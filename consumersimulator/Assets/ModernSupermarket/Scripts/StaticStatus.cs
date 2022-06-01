@@ -13,7 +13,14 @@ public class StaticStatus : MonoBehaviour
     private GameObject itemTextUI;
     private GameObject itemTextQuantity;
     private ItemUI itemUI;
-
+    private void Start()
+    {
+        arrayOfFive = FindObjectOfType<ArrayOfFive>();
+        if (arrayOfFive)
+        {
+            Debug.Log( "arrayOfFive is " + arrayOfFive.listNumbers.Count );
+        }
+    }
     private ArrayOfFive arrayOfFive;
     public void GrabStaticStatSelectStart()
     {
@@ -50,8 +57,7 @@ public class StaticStatus : MonoBehaviour
     {
         itemTextUI = GameObject.Find( "ItemTxt" );
         itemTextQuantity = GameObject.Find( "QuantityTxt" );
-        arrayOfFive = FindObjectOfType<ArrayOfFive>();
-        //Debug.Log( "arrayOfFive is " + arrayOfFive );
+        
         getCartName = Carts.cart;
 
         if (getCartName != null)

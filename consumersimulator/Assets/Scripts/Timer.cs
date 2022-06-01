@@ -29,6 +29,7 @@ public class Timer : MonoBehaviour
     public IEnumerator GameStartDelay()
     {
         timerTextField.text = "Timer";
+
         while (countdownTime > 0)
         {
             countdownDisplay.text = countdownTime.ToString();
