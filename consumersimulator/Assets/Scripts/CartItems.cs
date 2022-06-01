@@ -3,6 +3,7 @@ using System.Collections.Generic;
 public class CartItems
 {
     private static string itemName;
+    private static int matchedCount;
     private static int itemCount;
     private static List<string> allItems = new List<string>();
     private static List<Item> itemsObject = new List<Item>();
@@ -17,7 +18,11 @@ public class CartItems
         get{ return itemName; }
         set { itemName = value; }
     }
-    
+    public static int MatchedCount
+    {
+        get { return matchedCount; }
+        set { matchedCount = value; }
+    }
     public static List<Item> ItemCall
     {
         get { return itemsObject; }

@@ -9,13 +9,16 @@ public class ArrayOfFive : MonoBehaviour
     public TMP_Text textField;
     
     private Timer timer;
-    private string[] arrayoffive =
-    {"Banana","Pasta","Sliced Bread","Apple","Wine","1","2","3","4","5","6","7",
-        "8","9","10","11","12","13","14","15","16","17","18","19","20","21","22",
-        "23","24","25"
-    };
+    private List<string> arrayoffive;
+    public List<string> listNumbers; 
     void Start()
     {
+        arrayoffive = new List<string>
+            {"Banana","Pasta","SlicedBread","Apple","Wine","Shampoo","Book","Cake","Coffee","Cereals","Sugar","ChocolateBox",
+                "Chips","Rice","Milk","Sauce","Pepper","Bleach","Cheese","Pizza","Artichoke","Ham","PetFood","Teabox","Vase","Sushis","Garlic",
+                "Oil","Salt","Paintings"
+            };//MashPotatoe - Flour
+        listNumbers = new List<string>();
         timer = FindObjectOfType<Timer>();
         RandmeItems();
     }
@@ -23,7 +26,7 @@ public class ArrayOfFive : MonoBehaviour
     {
         if (textField )
         {
-            List<string> listNumbers = new List<string>();
+            
             string pickItem;
             //if (!mainItemsUi.activeSelf)
             //{
@@ -33,7 +36,7 @@ public class ArrayOfFive : MonoBehaviour
             {
                 do
                 {
-                    pickItem = arrayoffive[new System.Random().Next( 0 , arrayoffive.Length)];
+                    pickItem = arrayoffive[new System.Random().Next( 0 , arrayoffive.Count)];
                 } while (listNumbers.Contains( pickItem ));
                 listNumbers.Add( pickItem );
             }

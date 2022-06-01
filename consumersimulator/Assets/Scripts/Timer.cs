@@ -85,14 +85,10 @@ public class Timer : MonoBehaviour
     //winning conditions
     private void WinningConditions()
     {
-        switch (CartItems.TotalItems)
+        switch (CartItems.MatchedCount)
         {
             case 5:
                 {
-                    //stop timer
-                    //display winning UI
-                    //display winning audio
-                    //add 100 scores
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
                         currentScore = PlayerPrefs.GetInt( "playerscore" ) + 100;
@@ -103,10 +99,6 @@ public class Timer : MonoBehaviour
                 break;
             case 3:
                 {
-                    //stop timer
-                    //display added scores UI
-                    //display Ending audio
-                    //add 60 scores
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
                         currentScore = PlayerPrefs.GetInt( "playerscore" ) + 60;
@@ -117,11 +109,6 @@ public class Timer : MonoBehaviour
                 break;
             case 2:
                 {
-
-                    //stop timer
-                    //display Ending UI
-                    //display Ending audio
-                    //add 40 scores
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
                         currentScore = PlayerPrefs.GetInt( "playerscore" ) + 40;
@@ -133,11 +120,6 @@ public class Timer : MonoBehaviour
             case 1:
             case 0:
                 {
-
-                    //stop timer
-                    //display Loosing UI
-                    //display Loosing audio
-                    //update score to 0
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
                         currentScore = 0;

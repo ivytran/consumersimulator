@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +14,7 @@ public class StaticStatus : MonoBehaviour
     private GameObject itemTextQuantity;
     private ItemUI itemUI;
 
-    
+    private ArrayOfFive arrayOfFive;
     public void GrabStaticStatSelectStart()
     {
         itemUI = FindObjectOfType<ItemUI>();
@@ -48,7 +50,10 @@ public class StaticStatus : MonoBehaviour
     {
         itemTextUI = GameObject.Find( "ItemTxt" );
         itemTextQuantity = GameObject.Find( "QuantityTxt" );
+        arrayOfFive = FindObjectOfType<ArrayOfFive>();
+        //Debug.Log( "arrayOfFive is " + arrayOfFive );
         getCartName = Carts.cart;
+
         if (getCartName != null)
         {
             Debug.Log( "cartNameisNotNull " + getCartName );
@@ -79,6 +84,12 @@ public class StaticStatus : MonoBehaviour
             {
                 Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
             }
+            if (arrayOfFive && thisLength > 0)
+            {
+                Debug.Log( "arrayExistCart.." + arrayOfFive.listNumbers.Count );
+                CartItems.MatchedCount = CartItems.ItemCall.Where( x => arrayOfFive.listNumbers.Contains( x.Name ) ).Count();
+            }
+            StartCoroutine( DeactivatePanelCo() );
         }
         else
         {
@@ -106,6 +117,12 @@ public class StaticStatus : MonoBehaviour
             {
                 Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
             }
+            if (arrayOfFive && thisLength > 0)
+            {
+                Debug.Log( "arrayExist.." + arrayOfFive.listNumbers.Count );
+                CartItems.MatchedCount = CartItems.ItemCall.Where( x => arrayOfFive.listNumbers.Contains( x.Name ) ).Count();
+            }
+            StartCoroutine( DeactivatePanelCo() );
             gameObject.SetActive( false );
         }
         }
@@ -116,6 +133,10 @@ public class StaticStatus : MonoBehaviour
         yield return new WaitForSeconds( 2f );
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
- 
+    private IEnumerator DeactivatePanelCo()
+    {
+        yield return new WaitForSeconds( 2f );
+        itemUI.DiactivateCanvas();
+    }
     
 }

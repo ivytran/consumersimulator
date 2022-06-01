@@ -22,42 +22,44 @@ public class CartMouvment : MonoBehaviour
     public InputAction rightInputMove;
     public StringData leftControllerValue;
     public StringData rightControllerValue;
-
+    private bool isPressedCart = false;
     private void FixedUpdate()
     {
-       
-        if (leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "Off")
-        {      
-            leftInputMove.performed += ctx =>
-            {
-                leftTurn = ctx.ReadValue<float>();
-                countMove++;
-            };
-        }
-        else if (rightInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "Off")
+        if (isPressedCart)
         {
-            Debug.Log( "RightHandsCalled..." );
-            rightInputMove.performed += ctx =>
+            if (leftInputActionMove && leftControllerValue.RuntimeValue == "On" && rightControllerValue.RuntimeValue == "Off")
             {
-                rightTurn = ctx.ReadValue<float>();
-                Debug.Log( "RightHandsCalledValue..." + rightTurn );
-                countMove++;
-            };
-        }
-        else if ((rightInputActionMove && leftInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "On") || rightControllerValue || leftControllerValue)
-        {
-            Debug.Log( "bothHandsCalled..." );
-            rightInputMove.performed += ctx =>
+                leftInputMove.performed += ctx =>
+                {
+                    leftTurn = ctx.ReadValue<float>();
+                    countMove++;
+                };
+            }
+            else if (rightInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "Off")
             {
-                rightTurn = ctx.ReadValue<float>();
-                countMove++;
-            };
-            leftInputMove.performed += ctx =>
+                Debug.Log( "RightHandsCalled..." );
+                rightInputMove.performed += ctx =>
+                {
+                    rightTurn = ctx.ReadValue<float>();
+                    Debug.Log( "RightHandsCalledValue..." + rightTurn );
+                    countMove++;
+                };
+            }
+            else if (( rightInputActionMove && leftInputActionMove && rightControllerValue.RuntimeValue == "On" && leftControllerValue.RuntimeValue == "On" ) || rightControllerValue || leftControllerValue)
             {
-                leftTurn = ctx.ReadValue<float>();
-                Debug.Log( "lStart" + leftTurn );
-                countMove++;
-            };
+                Debug.Log( "bothHandsCalled..." );
+                rightInputMove.performed += ctx =>
+                {
+                    rightTurn = ctx.ReadValue<float>();
+                    countMove++;
+                };
+                leftInputMove.performed += ctx =>
+                {
+                    leftTurn = ctx.ReadValue<float>();
+                    Debug.Log( "lStart" + leftTurn );
+                    countMove++;
+                };
+            }
         }
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
@@ -100,6 +102,7 @@ public class CartMouvment : MonoBehaviour
 
         if (other.CompareTag( "LeftHandController" ) || other.CompareTag( "RightHandController" ))
         {
+            isPressedCart = true;
             //    if (hand)
             //    {
             //        if (!initMove)
