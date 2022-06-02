@@ -5,16 +5,16 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int countdownTime;
+    private int countdownTime;
     public Text countdownDisplay;
-
+    private float runTime;
     private int minutes;
     private int seconds;
     private int fraction;
 
     private float startTime;
     private string timerUIText;
-    private float uiTimer;
+    public float uiTimer;
  
 
     public Text timerTextField;
@@ -27,6 +27,11 @@ public class Timer : MonoBehaviour
     public GameObject progObj;
     public GameObject progAdvObj;
     private bool isWinResult = false;
+    private void Start()
+    {
+        countdownTime = 15;
+        startTime = Time.time;
+    }
     public IEnumerator GameStartDelay()
     {
         timerTextField.text = "Timer";
@@ -49,6 +54,7 @@ public class Timer : MonoBehaviour
         inFirst = true;
 
     }
+  
     // Update is called once per frame
     void Update()
     {
@@ -66,20 +72,19 @@ public class Timer : MonoBehaviour
     private void UpdateTimer()
     {
         uiTimer = Time.time - startTime;
+        Debug.Log( "timeris " + uiTimer );
         minutes = (int)uiTimer / 60;
         seconds = (int)uiTimer % 60;
         fraction = (int)(uiTimer * 100) % 100;
         timerUIText = string.Format("{0:00}:{1:00}", minutes, seconds, fraction);
-        string thisTime = string.Format( "{0}.{1}" , minutes , seconds );
-        remainingTime = float.Parse( thisTime );
+        //string thisTime = string.Format( "{0}.{1}" , minutes , seconds );
+        //remainingTime = float.Parse( thisTime );
 
-        if (minutes >= 2)
+        if (minutes >= 2 && !isWinResult)
         {
             timerTextField.text = "TIME IS UP";
-            if (!isWinResult)
-            {
-                WinningConditions();
-            }
+            WinningConditions();
+            //countdownTime = 15;
         }
         else
         {

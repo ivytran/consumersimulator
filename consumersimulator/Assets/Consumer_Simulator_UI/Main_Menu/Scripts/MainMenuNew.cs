@@ -81,9 +81,9 @@ namespace SlimUI.ModernMenu{
 		[Tooltip( "Highlight Image for when GENERAL Sub-Tab is selected in KEY BINDINGS" )]
 		public GameObject lineGeneral;
 		private List<string> allScenesName = new List<string>();
+
 		void Start()
 		{
-
 			CameraObject = gameObject.GetComponent<Animator>();
 			if (scoreValue)
 			{
