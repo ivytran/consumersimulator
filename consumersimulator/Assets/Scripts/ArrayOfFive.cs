@@ -14,10 +14,12 @@ public class ArrayOfFive : MonoBehaviour
     void Start()
     {
         arrayoffive = new List<string>
-            {"Banana","Pasta","SlicedBread","Apple","Wine","Shampoo","Book","Cake","Coffee","Cereals","Sugar","ChocolateBox",
-                "Chips","Rice","Milk","Sauce","Pepper","Bleach","Cheese","Pizza","Artichoke","Ham","PetFood","Teabox","Vase","Sushis","Garlic",
-                "Oil","Salt","Paintings"
+            {
+            "WineBottle","Shampoo","Bleach","ToiletPaper","Pizza","CansPack","WaterBottle"
             };//MashPotatoe - Flour
+        //"Banana","Pasta","SlicedBread","Apple","Wine","Shampoo","Book","Cake","Coffee","Cereals","Sugar","ChocolateBox",
+        //        "Chips","Rice","Milk","Sauce","Pepper","Bleach","Cheese","Pizza","Artichoke","Ham","PetFood","Teabox","Vase","Sushis","Garlic",
+        //        "Oil","Salt","Paintings"
         listNumbers = new List<string>();
         timer = FindObjectOfType<Timer>();
         RandmeItems();

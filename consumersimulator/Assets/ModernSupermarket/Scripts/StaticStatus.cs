@@ -15,6 +15,7 @@ public class StaticStatus : MonoBehaviour
     private ItemUI itemUI;
     private void Start()
     {
+        itemUI = FindObjectOfType<ItemUI>();
         arrayOfFive = FindObjectOfType<ArrayOfFive>();
         if (arrayOfFive)
         {
@@ -24,8 +25,6 @@ public class StaticStatus : MonoBehaviour
     private ArrayOfFive arrayOfFive;
     public void GrabStaticStatSelectStart()
     {
-        itemUI = FindObjectOfType<ItemUI>();
-        //GameObject.Find( "ItemCanvas" );
         itemUI.ActivateCanvas();
         itemTextUI = GameObject.Find( "ItemTxt" );
         itemTextQuantity = GameObject.Find( "QuantityTxt" );
@@ -94,8 +93,9 @@ public class StaticStatus : MonoBehaviour
             {
                 Debug.Log( "arrayExistCart.." + arrayOfFive.listNumbers.Count );
                 CartItems.MatchedCount = CartItems.ItemCall.Where( x => arrayOfFive.listNumbers.Contains( x.Name ) ).Count();
+                Debug.Log( "MatchedItemsCart.." + CartItems.MatchedCount );
             }
-            StartCoroutine( DeactivatePanelCo() );
+            StartCoroutine( DeactivatePanelCartCo() );
         }
         else
         {
@@ -127,9 +127,10 @@ public class StaticStatus : MonoBehaviour
             {
                 Debug.Log( "arrayExist.." + arrayOfFive.listNumbers.Count );
                 CartItems.MatchedCount = CartItems.ItemCall.Where( x => arrayOfFive.listNumbers.Contains( x.Name ) ).Count();
+                Debug.Log( "MatchedItems.." + CartItems.MatchedCount);
+                gameObject.transform.position = new Vector3( 40 , 50 , 0 );
+                StartCoroutine(DeactivatePanelCo());
             }
-            StartCoroutine( DeactivatePanelCo() );
-            gameObject.SetActive( false );
         }
         }
   
@@ -142,7 +143,13 @@ public class StaticStatus : MonoBehaviour
     private IEnumerator DeactivatePanelCo()
     {
         yield return new WaitForSeconds( 2f );
+        itemUI.DiactivateCanvas();  
+        gameObject.SetActive( false );
+    }
+    private IEnumerator DeactivatePanelCartCo()
+    {
+        yield return new WaitForSeconds( 2f );
         itemUI.DiactivateCanvas();
     }
-    
+
 }

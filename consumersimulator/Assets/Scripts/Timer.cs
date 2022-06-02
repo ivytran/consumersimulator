@@ -26,6 +26,7 @@ public class Timer : MonoBehaviour
     public GameObject lostObj;
     public GameObject progObj;
     public GameObject progAdvObj;
+    private bool isWinResult = false;
     public IEnumerator GameStartDelay()
     {
         timerTextField.text = "Timer";
@@ -75,7 +76,10 @@ public class Timer : MonoBehaviour
         if (minutes >= 2)
         {
             timerTextField.text = "TIME IS UP";
-            WinningConditions();
+            if (!isWinResult)
+            {
+                WinningConditions();
+            }
         }
         else
         {
@@ -84,53 +88,55 @@ public class Timer : MonoBehaviour
         }
     }
     //winning conditions
-    private void WinningConditions()
+    private bool WinningConditions()
     {
-        switch (CartItems.MatchedCount)
+        isWinResult = true;
+        if (CartItems.MatchedCount != null)
         {
-            case 5:
-                {
+            switch (CartItems.MatchedCount)
+            {
+                case 5:
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
-                        currentScore = PlayerPrefs.GetInt( "playerscore" ) + 100;
-                        PlayerPrefs.SetInt( "playerscore" , currentScore );
+                        PlayerPrefs.SetInt( "playerscore" , 100 );
+                        Debug.Log( "scoreIs " + 100 );
+                        winObj.SetActive( true );
+                        return true;
                     }
-                    winObj.SetActive( true );
-                }
-                break;
-            case 3:
-                {
+                    return false ;
+                case 4:
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
-                        currentScore = PlayerPrefs.GetInt( "playerscore" ) + 60;
-                        PlayerPrefs.SetInt( "playerscore" , currentScore );
+                        PlayerPrefs.SetInt( "playerscore" , 60 );
+                        Debug.Log( "scoreIs " + 60 );
+                        progAdvObj.SetActive( true );
+                        return true;
                     }
-                    progAdvObj.SetActive( true );
-                }
-                break;
-            case 2:
-                {
+                    return false;
+                case 2:
+                case 3:
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
-                        currentScore = PlayerPrefs.GetInt( "playerscore" ) + 40;
-                        PlayerPrefs.SetInt( "playerscore" , currentScore );
+                        PlayerPrefs.SetInt( "playerscore" , 40 );
+                        Debug.Log( "scoreIs " + 40 );
+                        progObj.SetActive( true );
+                        return true;
                     }
-                    progObj.SetActive( true );
-                }
-                break;
-            case 1:
-            case 0:
-                {
+                    return false;
+                case 1:
+                case 0:
                     if (PlayerPrefs.HasKey( "playerscore" ))
                     {
                         currentScore = 0;
                         PlayerPrefs.SetInt( "playerscore" , currentScore );
+                        lostObj.SetActive( true );
+                        return true;
                     }
-                    lostObj.SetActive(true);
-                }
-                break;
-            default:
-                break;
+                    return false;
+                default:
+                    break;
+            }
         }
+        return false;
     }
 }
