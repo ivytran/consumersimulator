@@ -18206,6 +18206,7 @@ MonoBehaviour:
   lineMovement: {fileID: 1969529661187069}
   lineCombat: {fileID: 1242450519631031}
   lineGeneral: {fileID: 1751624183118575}
+  optionCanvas: {fileID: 1827708967095139}
 --- !u!114 &114174685741294417
 MonoBehaviour:
   m_ObjectHideFlags: 0

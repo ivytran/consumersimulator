@@ -81,7 +81,7 @@ namespace SlimUI.ModernMenu{
 		[Tooltip( "Highlight Image for when GENERAL Sub-Tab is selected in KEY BINDINGS" )]
 		public GameObject lineGeneral;
 		private List<string> allScenesName = new List<string>();
-
+		public GameObject optionCanvas;
 		void Start()
 		{
 			CameraObject = gameObject.GetComponent<Animator>();
@@ -336,18 +336,18 @@ namespace SlimUI.ModernMenu{
 
 		IEnumerator LoadAsynchronously(string sceneName)
 		{
+			optionCanvas.SetActive( false );
+			mainCanvas.SetActive( false );
 			AsyncOperation operation = SceneManager.LoadSceneAsync( sceneName );
 			operation.allowSceneActivation = false;
 			mainCanvas.SetActive( false );
 			while (!operation.isDone)
 			{
-				if (operation.progress >= 0.9f)
-				{
 					if (operation.progress >= 0.9f)
 					{
 						operation.allowSceneActivation = true;
 					}
-				}
+				
 				yield return null;
 			}
 		}
