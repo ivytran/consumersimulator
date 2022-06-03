@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
@@ -18,7 +19,7 @@ public class Timer : MonoBehaviour
  
 
     public Text timerTextField;
-    private bool inFirst = false;
+    private bool inFirst;
     public GameObject mainItemsUi;
     private int currentScore;
     public float remainingTime;
@@ -26,11 +27,24 @@ public class Timer : MonoBehaviour
     public GameObject lostObj;
     public GameObject progObj;
     public GameObject progAdvObj;
-    private bool isWinResult = false;
+    private bool isWinResult;
+    private bool isStopedResult;
+    public InputAction stopInput;
     private void Start()
     {
         countdownTime = 15;
+        inFirst = false;
+        isWinResult = false;
+        isStopedResult = false;
         startTime = Time.time;
+    }
+    private void OnEnable()
+    {
+        stopInput.Enable();
+    }
+    private void OnDisable()
+    {
+        stopInput.Disable();
     }
     public IEnumerator GameStartDelay()
     {
@@ -77,19 +91,37 @@ public class Timer : MonoBehaviour
         seconds = (int)uiTimer % 60;
         fraction = (int)(uiTimer * 100) % 100;
         timerUIText = string.Format("{0:00}:{1:00}", minutes, seconds, fraction);
-        //string thisTime = string.Format( "{0}.{1}" , minutes , seconds );
-        //remainingTime = float.Parse( thisTime );
-
+        string thisTime = string.Format( "{0}.{1}" , minutes , seconds );
+        remainingTime = float.Parse( thisTime );
+        
+        //show result after 2 minutes
         if (minutes >= 2 && !isWinResult)
         {
             timerTextField.text = "TIME IS UP";
             WinningConditions();
-            //countdownTime = 15;
         }
         else
         {
-            timerTextField.text = timerUIText;
-            //finish game under circumstances earlier or quit the game
+            //finish the game earlier or quit the game
+            //press B or Y button
+            if (!isStopedResult)
+            {
+                timerTextField.text = timerUIText;
+                stopInput.performed += ctx =>
+                {
+                    runTime = ctx.ReadValue<float>();
+                    Debug.Log( "runTime" + runTime );
+                    if (runTime == 1)
+                    {
+                        WinningConditions();
+                        isStopedResult = true;
+                    }
+                };
+            }
+            else
+            {
+                timerTextField.text = "0:00";
+            }
         }
     }
     //winning conditions

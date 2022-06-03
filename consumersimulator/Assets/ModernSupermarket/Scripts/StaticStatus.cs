@@ -22,6 +22,7 @@ public class StaticStatus : MonoBehaviour
             Debug.Log( "arrayOfFive is " + arrayOfFive.listNumbers.Count );
         }
     }
+    
     private ArrayOfFive arrayOfFive;
     public void GrabStaticStatSelectStart()
     {
