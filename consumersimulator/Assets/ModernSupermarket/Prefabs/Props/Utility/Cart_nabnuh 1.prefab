@@ -196,25 +196,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c17bf53b811b7242ad794a753e44b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 0}
-  inputActionMove: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  inputMove:
-    m_Name: Input Move
+  leftInputActionMove: {fileID: 0}
+  leftInputMove:
+    m_Name: Left Input Move
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: b9e937fd-b278-4915-8b17-16287f4d0031
+    m_Id: 210ce2cc-fe4c-4d30-a367-56cbe170dde6
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: d85f7fb4-d884-4898-92fe-b1e06133eb3d
-      m_Path: <XRController>/triggerPressed
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Input Move
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
+  rightInputActionMove: {fileID: 0}
+  rightInputMove:
+    m_Name: Right Input Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: dbaf5f51-ee3f-4988-b3b8-5cc38af8b374
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  leftControllerValue: {fileID: 0}
+  rightControllerValue: {fileID: 0}
 --- !u!65 &693303929
 BoxCollider:
   m_ObjectHideFlags: 0
