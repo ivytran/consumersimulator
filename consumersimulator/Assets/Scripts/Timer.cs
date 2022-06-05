@@ -30,6 +30,9 @@ public class Timer : MonoBehaviour
     private bool isWinResult;
     private bool isStopedResult;
     public InputAction stopInput;
+
+    public GameObject handRCell;
+    public GameObject handLCell;
     private void Start()
     {
         countdownTime = 15;
@@ -80,6 +83,14 @@ public class Timer : MonoBehaviour
         if (inFirst && mainItemsUi && mainItemsUi.activeSelf)
         {
             mainItemsUi.SetActive( false );
+            if (handLCell)
+            {
+                handLCell.SetActive( true );
+            }
+            if (handRCell)
+            {
+                handRCell.SetActive( true );
+            }
         }
     }
 
