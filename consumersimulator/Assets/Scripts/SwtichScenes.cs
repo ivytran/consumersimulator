@@ -39,7 +39,7 @@ public class SwtichScenes : MonoBehaviour
             //check thye volume
             if (PlayerPrefs.HasKey( "playerscore" ))
                 {
-                    currentScore = PlayerPrefs.GetInt( "playerscore" ) + 20;
+                    currentScore = PlayerPrefs.GetInt( "playerscore" );
                     PlayerPrefs.SetInt( "playerscore" , currentScore );
                     ScoreValues.scoreVal = currentScore.ToString();
                     if (sqlData)
@@ -64,7 +64,7 @@ public class SwtichScenes : MonoBehaviour
                 switchValue = ctx.ReadValue<float>();
                 if (PlayerPrefs.HasKey( "playerscore" ))
                 {
-                    currentScore = PlayerPrefs.GetInt( "playerscore" ) + 20;
+                    currentScore = PlayerPrefs.GetInt( "playerscore" );
                     PlayerPrefs.SetInt( "playerscore" , currentScore );
                     ScoreValues.scoreVal = currentScore.ToString();
                     if (sqlData)
@@ -100,7 +100,8 @@ public class SwtichScenes : MonoBehaviour
     {
         if (gameEvents && timeData)
         {
-            timeData.RuntimeValue = 12.75f;
+            //get time from timer
+            timeData.RuntimeValue = FindObjectOfType<Timer>().remainingTime;
             yield return new WaitForSeconds( 3f );
             gameEvents.Raise();
             yield return new WaitForSeconds( 3f );

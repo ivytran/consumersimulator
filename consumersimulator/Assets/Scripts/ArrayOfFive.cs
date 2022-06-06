@@ -1,61 +1,76 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ArrayOfFive : MonoBehaviour
 {
-    //public GameObject[] fiveitems; //will attach other objects in Unity to this one
-       
     public Button myButton;
- 
-    public string[] arrayoffive =
-{
-        "Mango",
-        "Pasta",
-        "Sliced Bread",
-        "Apple",
-        "Wine"
-    };
+    public TMP_Text textField;
 
-    // Start is called before the first frame update
+    private Timer timer;
+    private List<string> arrayoffive;
+    public List<string> listNumbers;
+    public GameObject cellRItems;
+    public GameObject cellLItems;
     void Start()
     {
-        foreach (string array in arrayoffive)
+        arrayoffive = new List<string>
+            {
+            "WineBottle","Shampoo","Bleach","ToiletPaper","Pizza","CansPack","WaterBottle"
+            };//MashPotatoe - Flour
+        //"Banana","Pasta","SlicedBread","Apple","Wine","Shampoo","Book","Cake","Coffee","Cereals","Sugar","ChocolateBox",
+        //        "Chips","Rice","Milk","Sauce","Pepper","Bleach","Cheese","Pizza","Artichoke","Ham","PetFood","Teabox","Vase","Sushis","Garlic",
+        //        "Oil","Salt","Paintings"
+        listNumbers = new List<string>();
+        timer = FindObjectOfType<Timer>();
+        RandmeItems();
+    }
+    private void RandmeItems()
+    {
+        if (textField)
         {
 
-            print(array);
+            string pickItem;          
+            //if (!mainItemsUi.activeSelf)
+            //{
+            //    mainItemsUi.SetActive( true );
+            //}
+            for (int i = 0; i < 5; i++)
+            {
+                do
+                {
+                    pickItem = arrayoffive[new System.Random().Next( 0 , arrayoffive.Count )];
+                } while (listNumbers.Contains( pickItem ));
+                listNumbers.Add( pickItem );
+            }
+            if (listNumbers.Count == 5)
+            {
+                foreach (var item in listNumbers)
+                {
+                    textField.text += item + "\n";
+                    if (cellRItems)
+                    {
+                        cellRItems.GetComponent<TMP_Text>().text += item + "\n";
+                    }
+                    if (cellLItems)
+                    {
+                        cellLItems.GetComponent<TMP_Text>().text += item + "\n";
+                    }
+                }
+            }
         }
-        //for (int i = 0; i < arrayoffive.Length; i++)
-        //{
-        //    int rank = i + 1;
-        //    Console.Write(rank + "." + arrayoffive[i]);
-        //    print(i);
-
-        //}
-
-        
     }
-          
-    
-    void TaskOnClick()
+    public void TaskOnClick()
     {
-        Button btn = myButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
-        //print(arrayoffive);
-
-        Debug.Log("You clicked the button!");
+        if (timer)
+        {
+            DeactivateItemMenu();
+        }
     }
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
-
-    //public void buttonClick(Button myButton)
-    //{
-    //    btn.onClick.AddListener(buttonClick);
-
-    //}
+    private void DeactivateItemMenu()
+    {
+        StartCoroutine( timer.GameStartDelay() );
+  
+    }
 }

@@ -1,4 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +14,20 @@ public class StaticStatus : MonoBehaviour
     private GameObject itemTextUI;
     private GameObject itemTextQuantity;
     private ItemUI itemUI;
-
-    
-    public void GrabStaticStatSelectStart()
+ 
+    private void Start()
     {
         itemUI = FindObjectOfType<ItemUI>();
-        //GameObject.Find( "ItemCanvas" );
+        arrayOfFive = FindObjectOfType<ArrayOfFive>();
+        if (arrayOfFive)
+        {
+            Debug.Log( "arrayOfFive is " + arrayOfFive.listNumbers.Count );
+        }
+    }
+    
+    private ArrayOfFive arrayOfFive;
+    public void GrabStaticStatSelectStart()
+    {
         itemUI.ActivateCanvas();
         itemTextUI = GameObject.Find( "ItemTxt" );
         itemTextQuantity = GameObject.Find( "QuantityTxt" );
@@ -48,7 +59,9 @@ public class StaticStatus : MonoBehaviour
     {
         itemTextUI = GameObject.Find( "ItemTxt" );
         itemTextQuantity = GameObject.Find( "QuantityTxt" );
+        
         getCartName = Carts.cart;
+
         if (getCartName != null)
         {
             Debug.Log( "cartNameisNotNull " + getCartName );
@@ -79,6 +92,13 @@ public class StaticStatus : MonoBehaviour
             {
                 Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
             }
+            if (arrayOfFive && thisLength > 0)
+            {
+                Debug.Log( "arrayExistCart.." + arrayOfFive.listNumbers.Count );
+                CartItems.MatchedCount = CartItems.ItemCall.Where( x => arrayOfFive.listNumbers.Contains( x.Name ) ).Count();
+                Debug.Log( "MatchedItemsCart.." + CartItems.MatchedCount );
+            }
+            StartCoroutine( DeactivatePanelCartCo() );
         }
         else
         {
@@ -106,8 +126,14 @@ public class StaticStatus : MonoBehaviour
             {
                 Debug.Log( "itemsObject " + CartItems.ItemCall[i].Name + CartItems.ItemCall[i].Id + CartItems.ItemCall[i].Description );
             }
-            gameObject.SetActive( false );
-        
+            if (arrayOfFive && thisLength > 0)
+            {
+                Debug.Log( "arrayExist.." + arrayOfFive.listNumbers.Count );
+                CartItems.MatchedCount = CartItems.ItemCall.Where( x => arrayOfFive.listNumbers.Contains( x.Name ) ).Count();
+                Debug.Log( "MatchedItems.." + CartItems.MatchedCount);
+                gameObject.transform.position = new Vector3( 40 , 50 , 0 );
+                StartCoroutine(DeactivatePanelCo());
+            }
         }
         }
   
@@ -117,4 +143,16 @@ public class StaticStatus : MonoBehaviour
         yield return new WaitForSeconds( 2f );
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
+    private IEnumerator DeactivatePanelCo()
+    {
+        yield return new WaitForSeconds( 2f );
+        itemUI.DiactivateCanvas();  
+        gameObject.SetActive( false );
+    }
+    private IEnumerator DeactivatePanelCartCo()
+    {
+        yield return new WaitForSeconds( 2f );
+        itemUI.DiactivateCanvas();
+    }
+
 }

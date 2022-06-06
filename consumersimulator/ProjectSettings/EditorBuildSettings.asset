@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: cf2b11593a9fd1f4e814006f8acce4ee
   - enabled: 1
     path: Assets/ModernSupermarket/Scenes/Scene_Supermarket/Supermarket.unity
-    guid: 95cb9ac7a1494454abac29b7879ed266
+    guid: c9714f766d1e47648aeaeba0d3165860
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7bbadf2bc47d0624d82a7e6f22cfa476, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5b61cd03bfb184f4caed541e9fc337f5, type: 2}
